@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佐世保市上下水道局 機構図・事務分掌</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --color-fashion-1: #593C47;
+            --color-fashion-2: #F2E63D;
+            --color-fashion-3: #F2C53D;
+            --color-fashion-4: #F25C05;
+            --color-fashion-5: #F24405;
+
+            --font-handwriting: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', cursive;
+            --font-base: 'Zen Kurenaido', sans-serif;
+
+            --text-color-primary: #334155;
+            --text-color-secondary: #475569;
+            --heading-color: #1e40af;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --highlight-bg: #F2E63D;
+            --accent-color-1: var(--color-fashion-4);
+            --accent-color-2: var(--color-fashion-5);
+        }
+
+        body {
+            font-family: var(--font-base);
+            line-height: 1.6;
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa, #e8edf2); /* Light neutral background */
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px; /* Adjusted max-width for single column */
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px dashed var(--color-fashion-1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: var(--font-handwriting);
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        header .meta-info {
+            font-size: 14px;
+            color: var(--text-color-secondary);
+            text-align: right;
+        }
+
+        .main-content {
+             /* Removed flex/grid for single column */
+            display: flex;
+            flex-direction: column; /* Stack cards vertically */
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Removed .column styles */
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+            width: 100%; /* Ensure card takes full width */
+            box-sizing: border-box;
+        }
+
+        .card::before {
+            content: '🏢'; /* Building icon for organization */
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(5deg);
+            font-size: 24px;
+            opacity: 0.8;
+        }
+
+        h2 {
+            font-family: var(--font-handwriting);
+            font-size: 22px;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 20px; /* Increased margin */
+            border-bottom: 2px dotted var(--accent-color-1);
+            padding-bottom: 8px; /* Increased padding */
+            display: inline-block;
+        }
+         h2.org-chart-title::before {
+             content: '📊 '; /* Chart icon */
+             margin-right: 5px;
+         }
+          h2.duty-title::before {
+             content: '📋 '; /* Clipboard icon */
+             margin-right: 5px;
+         }
+
+
+        h3 {
+            font-family: var(--font-handwriting);
+            font-size: 18px;
+            color: var(--color-fashion-1);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+         h3::before {
+             /* Department/Section icon */
+             content: '📁 '; /* Folder icon */
+             position: absolute;
+             left: 0;
+             top: 0;
+             font-size: 1.1em;
+         }
+
+        p, li {
+            font-size: 14px;
+            color: var(--text-color-primary);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        ul.org-structure {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul.org-structure ul {
+            padding-left: 30px; /* Indentation for hierarchy */
+            border-left: 2px dashed var(--color-fashion-3); /* Connection line */
+            margin-left: 10px; /* Space before line */
+        }
+        ul.org-structure li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px; /* Space for icon */
+        }
+        ul.org-structure li::before {
+            /* Icons for different levels */
+            font-size: 1.1em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        /* Specific Icons for Org Structure */
+        .manager::before { content: '👑 '; } /* Top Manager */
+        .department::before { content: '🏢 '; } /* Department */
+        .division::before { content: '📁 '; } /* Division/課 */
+        .section::before { content: '👤 '; } /* Section/係 */
+        .office::before { content: '🏤 '; } /* Office/事務所 */
+        .center::before { content: '🔬 '; } /* Center */
+        .quasi-division::before { content: '📎 '; } /* 準課 */
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-size: 13px; /* Slightly larger for readability */
+            border: 1px dashed #aaa;
+        }
+
+        th, td {
+            border: 1px dashed #ccc;
+            padding: 10px; /* Increased padding */
+            text-align: left;
+            vertical-align: top; /* Align content top */
+        }
+
+        th {
+            background-color: rgba(89, 59, 70, 0.1);
+            font-family: var(--font-handwriting);
+            font-weight: bold;
+            color: var(--color-fashion-1);
+            width: 150px; /* Fixed width for division name column */
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-color-secondary);
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+             header {
+                 flex-direction: column;
+                 align-items: flex-start;
+                 text-align: left;
+            }
+             header .meta-info {
+                 margin-top: 10px;
+                 text-align: left;
+            }
+             th {
+                 width: 120px; /* Adjust width for smaller screens */
+             }
+             td {
+                 font-size: 12px;
+             }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>佐世保市上下水道局 機構</h1>
+            <div class="meta-info">
+                （令和6年3月31日現在）<br>
+                作成日: 2025-04-04
+            </div>
+        </header>
+
+        <div class="main-content">
+
+            <div class="card">
+                <h2 class="org-chart-title">機構図</h2>
+                <ul class="org-structure">
+                    <li class="manager"><strong>佐世保市水道事業及び下水道事業管理者</strong>
+                        <ul>
+                            <li class="department"><strong>経営管理部</strong>
+                                <ul>
+                                    <li class="division">総務課
+                                        <ul>
+                                            <li class="section">総務管理係</li>
+                                            <li class="section">職員係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="division">経営企画課</li>
+                                    <li class="division">財務課
+                                        <ul>
+                                            <li class="section">経理係</li>
+                                            <li class="section">調達係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="division">営業課
+                                        <ul>
+                                            <li class="section">業務係</li>
+                                            <li class="section">料金係</li>
+                                            <li class="section">計量係</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="department"><strong>事業部</strong>
+                                <ul>
+                                    <li class="division">水道計画建設課</li>
+                                    <li class="division">水道維持課
+                                        <ul>
+                                            <li class="section">給水装置係</li>
+                                            <li class="section">維持第一係</li>
+                                            <li class="section">維持第二係</li>
+                                            <li class="section">東部管理係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="division">水道管路整備課
+                                        <ul>
+                                            <li class="section">建設改良第一係</li>
+                                            <li class="section">建設改良第二係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="quasi-division">（準）IR推進室</li>
+                                    <li class="division">水道施設課
+                                        <ul>
+                                            <li class="section">水道施設係</li>
+                                            <li class="section">水道設備係</li>
+                                            <li class="section">施設管理係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="office">北部管理事務所
+                                        <ul>
+                                            <li class="section">北部管理係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="quasi-division">（準）宇久営業所</li>
+                                    <li class="division">下水道事業課
+                                        <ul>
+                                            <li class="section">下水道普及促進係</li>
+                                            <li class="section">下水道計画係</li>
+                                            <li class="section">下水道建設第一係</li>
+                                            <li class="section">下水道建設第二係</li>
+                                            <li class="section">下水道維持係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="division">下水道施設課
+                                        <ul>
+                                            <li class="section">下水道施設係</li>
+                                        </ul>
+                                    </li>
+                                    <li class="center">水質管理センター
+                                        <ul>
+                                            <li class="section">水道水質係</li>
+                                            <li class="section">下水道水質係</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2 class="duty-title">事務分掌</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>課名</th>
+                            <th>主な業務内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><th>総務課</th><td>庶務、条例・規程統括、財産管理、広報・広聴、職員管理</td></tr>
+                        <tr><th>経営企画課</th><td>水源確保、企画調整、ビジョン推進、経営戦略、総合計画</td></tr>
+                        <tr><th>財務課</th><td>財政計画、予算・決算、企業債・補助金、契約、指定工事事業者管理</td></tr>
+                        <tr><th>営業課</th><td>料金通知、收入調定・収納、給排水使用処理、料金精算、計量・メーター管理</td></tr>
+                        <tr><th>水道計画建設課</th><td>基幹施設建設計画・設計・施工、水道事業認可、開発行為</td></tr>
+                        <tr><th>水道維持課</th><td>給水装置審査・検査、維持管理、漏水防止、簡易水道施設管理</td></tr>
+                        <tr><th>水道管路整備課</th><td>管路建設・改良・移設の計画・設計・施工、管路情報管理</td></tr>
+                        <tr><th>IR推進室（準課）</th><td>IR施設関連水道施設の計画・設計・施工</td></tr>
+                        <tr><th>水道施設課</th><td>水道施設の建設・改良・維持管理、電気設備、水運用</td></tr>
+                        <tr><th>北部管理事務所</th><td>給水装置審査・検査、配・給水管維持管理、水源・浄水場管理</td></tr>
+                        <tr><th>宇久営業所（準課）</th><td>水道施設維持管理、収入金収納</td></tr>
+                        <tr><th>下水道事業課</th><td>受益者負担金賦課・収納、下水道普及促進、事業計画、管渠設計・施工監督</td></tr>
+                        <tr><th>下水道施設課</th><td>処理施設増改築計画・設計・施工監督、維持管理</td></tr>
+                        <tr><th>水質管理センター</th><td>水道・下水道の水質管理・保持・改善、研究</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <footer>
+            出典: 佐世保市水道局 提供資料 (令和6年3月31日現在 機構) を基に作成 | 生成AI支援によるグラフィックレコード風表現
+        </footer>
+    </div>
+</body>
+</html>
