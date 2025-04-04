@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佐世保市水道事業 グラフィックレコード風レポート</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --color-fashion-1: #593C47; /* rgb(89, 59, 70) */
+            --color-fashion-2: #F2E63D; /* rgb(242, 230, 60) */
+            --color-fashion-3: #F2C53D; /* rgb(242, 196, 60) */
+            --color-fashion-4: #F25C05; /* rgb(242, 91, 4) */
+            --color-fashion-5: #F24405; /* rgb(242, 68, 4) */
+
+            --font-handwriting: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', cursive;
+            --font-base: 'Zen Kurenaido', sans-serif;
+
+            --text-color-primary: #334155;
+            --text-color-secondary: #475569;
+            --heading-color: #1e40af;
+            --card-bg: rgba(255, 255, 255, 0.85); /* Slightly transparent for glassmorphism effect */
+            --card-border: rgba(255, 255, 255, 0.4);
+            --highlight-bg: #F2E63D; /* ファッション-2 */
+            --accent-color-1: var(--color-fashion-4);
+            --accent-color-2: var(--color-fashion-5);
+        }
+
+        body {
+            font-family: var(--font-base);
+            line-height: 1.6;
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Light background */
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 100%; /* Ensure it uses full width */
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px dashed var(--color-fashion-1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: var(--font-handwriting);
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        header .meta-info {
+            font-size: 14px;
+            color: var(--text-color-secondary);
+            text-align: right;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping for responsiveness if needed */
+            gap: 20px;
+            width: 100%;
+        }
+
+        .column {
+            flex: 1 1 30%; /* Aim for 3 columns, allow shrinking/growing */
+            min-width: 300px; /* Minimum width before wrapping */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(8px); /* Glassmorphism effect */
+            position: relative; /* For pseudo-elements like pins */
+            overflow: hidden; /* Keep content within rounded corners */
+        }
+
+        .card::before { /* Decorative pin */
+            content: '📌';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(15deg);
+            font-size: 24px;
+            opacity: 0.8;
+        }
+
+        h2 { /* Section Title in Card */
+            font-family: var(--font-handwriting);
+            font-size: 22px;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px dotted var(--accent-color-1);
+            padding-bottom: 5px;
+            display: inline-block; /* Fit border to text */
+        }
+         h2::before {
+             content: '💧 '; /* Water drop icon */
+             margin-right: 5px;
+         }
+
+
+        h3 { /* Sub-section Title */
+            font-family: var(--font-handwriting);
+            font-size: 18px;
+            color: var(--color-fashion-1);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+         h3::before {
+             content: '✏️'; /* Pencil icon */
+             position: absolute;
+             left: 0;
+             top: 0;
+         }
+
+        h4 { /* Sub-sub-section Title */
+            font-size: 16px;
+            color: var(--text-color-secondary);
+            margin-top: 15px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--accent-color-2);
+            padding-left: 10px;
+        }
+
+        p, li {
+            font-size: 14px;
+            color: var(--text-color-primary);
+            line-height: 1.6; /* Adjusted from 1.4 for better readability */
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style: none; /* Remove default bullets */
+        }
+
+        ul li::before {
+            content: ' ◆ '; /* Custom bullet */
+            color: var(--accent-color-1);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--highlight-bg) 60%);
+            padding: 0 2px;
+            font-weight: bold;
+        }
+
+        .keyword-underline {
+            border-bottom: 2px solid var(--accent-color-2);
+            padding-bottom: 1px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-size: 12px; /* Smaller font for tables */
+            border: 1px dashed #aaa; /* Hand-drawn style border */
+        }
+
+        th, td {
+            border: 1px dashed #ccc; /* Hand-drawn style border */
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(89, 59, 70, 0.1); /* Light Fashion-1 */
+            font-family: var(--font-handwriting);
+            font-weight: bold;
+            color: var(--color-fashion-1);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5); /* Slight alternation */
+        }
+
+        .arrow { /* Simple arrow connector */
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 18px;
+            color: var(--accent-color-1);
+            font-family: var(--font-handwriting);
+        }
+
+        .data-value {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--accent-color-2);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-color-secondary);
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+        }
+
+        /* Responsive adjustments (optional, as width is 100%) */
+        @media (max-width: 992px) {
+            .column {
+                flex-basis: 45%; /* Two columns on medium screens */
+                 min-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .column {
+                flex-basis: 100%; /* Single column on small screens */
+                 min-width: 100%;
+            }
+             header {
+                 flex-direction: column;
+                 align-items: flex-start;
+                 text-align: left;
+            }
+             header .meta-info {
+                 margin-top: 10px;
+                 text-align: left;
+            }
+        }
+
+         /* Custom styles for specific sections */
+        .vision-card .basic-principles {
+             background-color: rgba(242, 196, 60, 0.1); /* Light Fashion-3 */
+             padding: 15px;
+             border-radius: 8px;
+             border-left: 5px solid var(--color-fashion-3);
+         }
+        .vision-card h4 {
+             color: var(--color-fashion-3);
+             border-left-color: var(--color-fashion-3);
+         }
+
+        .finance-card .profit {
+             color: #22c55e; /* Green for profit */
+             font-weight: bold;
+         }
+         .finance-card .loss { /* Not used here, but for potential future use */
+             color: #ef4444; /* Red for loss */
+             font-weight: bold;
+         }
+         .finance-card h3::before { content: '💰 '; }
+
+         .stats-card h3::before { content: '📊 '; }
+
+         .event-card h3::before { content: '🗓️ '; }
+
+         .facility-card h3::before { content: '🏭 '; }
+
+         .water-quality-card h3::before { content: '🔬 '; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>佐世保市水道事業 概要レポート</h1>
+            <div class="meta-info">
+                データ基準: 令和5年度<br>
+                作成日: 2025-04-04
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="column">
+                <div class="card">
+                    <h2>📌 事業沿革</h2>
+                    <h3>佐世保市水道のあゆみ</h3>
+
+                    <h4>① 水道の創設</h4>
+                    <ul>
+                        <li>明治時代に誕生。海軍鎮守府設置で人口増 <span class="arrow">➡️</span> 水道必要性UP。</li>
+                        <li>M36.4: 旧海軍水道の分与で人力配給開始。</li>
+                        <li>M40.9: 全国<span class="highlight">10番目</span>の近代水道として給水開始。</li>
+                    </ul>
+
+                    <h4>② 水道運営の一本化</h4>
+                    <p>S25: 旧軍港市転換法で軍施設が市に移管 <span class="arrow">➡️</span> <span class="keyword-underline">市水道へ一本化</span>。</p>
+
+                    <h4>③ 事業経過</h4>
+                    <p>創設～終戦: 1期～4期拡張事業実施。</p>
+                    <p>終戦後: 5期～8期拡張事業完成。</p>
+                    <p>現在: <span class="highlight">9期拡張事業</span>を継続中。</p>
+                    <details>
+                        <summary>主な拡張事業（クリックで展開）</summary>
+                        <table>
+                            <thead>
+                                <tr><th>事業名</th><th>認可</th><th>概要</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>創設</td><td>M38</td><td>施設拡張</td></tr>
+                                <tr><td>第4期</td><td>S9</td><td>菰田ダム建設</td></tr>
+                                <tr><td>第5期</td><td>S26</td><td>川谷ダム建設</td></tr>
+                                <tr><td>第7期</td><td>S39</td><td>下の原ダム建設</td></tr>
+                                <tr><td>第8期</td><td>S45</td><td>川棚川取水</td></tr>
+                                <tr><td>第9期</td><td>S51～</td><td>石木ダム建設, 各地区給水, 事業譲受, 浄水方法変更等</td></tr>
+                            </tbody>
+                        </table>
+                    </details>
+
+                </div>
+                <div class="card vision-card">
+                    <h2>💡 佐世保市水道ビジョン</h2>
+                     <h4>佐世保市水道ビジョン2020 (R2.3発行)</h4>
+                    <p>国の新水道ビジョンと整合性をとり、第7次総合計画を具現化。</p>
+                    <div class="basic-principles">
+                         <h4>🌟 基本理念</h4>
+                         <p><span class="keyword-underline">未来につなぐ信頼される佐世保の水道</span></p>
+                         <h4>🧭 基本方針</h4>
+                         <ul>
+                             <li>安全な水道サービスの確保</li>
+                             <li>持続可能な水道事業の実現</li>
+                             <li>市民からの信頼の確保</li>
+                         </ul>
+                    </div>
+                    <p>施策体系を構築し、<span class="highlight">PDCAサイクル</span>で実践。</p>
+                </div>
+                 <div class="card event-card">
+                    <h2>🗓️ 令和5年度 主な出来事</h2>
+                     <ul>
+                         <li><strong>8月9月6日 水を大切にする日 (8/27 島瀬公園)</strong><br>防災パネル展示、給水車体験等</li>
+                         <li><strong>2月 能登半島地震 被災地応急給水 (石川県能登町)</strong><br>職員・給水車派遣 (R6.2.21～3.2)</li>
+                     </ul>
+                 </div>
+            </div>
+
+            <div class="column">
+                <div class="card stats-card">
+                    <h2>📊 令和5年度 事業概況</h2>
+                    <p><strong>基本方針</strong>: 「安全安心な水」「快適安定な水」「環境配慮な水」づくり</p>
+
+                    <h3>1. 給水状況</h3>
+                    <ul>
+                        <li>年間総配水量: <span class="data-value">26,779,865 ㎥</span> (前年度比 1.1%減)</li>
+                        <li>有収水量: <span class="data-value">23,641,966 ㎥</span> (前年度比 1.6%減)</li>
+                    </ul>
+
+                    <h3>2. 令和5年度 主要事業 🚧</h3>
+                    <h4>① 水道施設整備事業</h4>
+                    <ul>
+                        <li>老朽管布設替え: <span class="highlight">3,657m</span> (松瀬町等)</li>
+                        <li>菰田導水管推進工事 (R6継続)</li>
+                        <li>浄水場・ポンプ所設備更新 (田原浄水場等)</li>
+                        <li>簡易水道老朽管布設替え: <span class="highlight">840m</span> (鹿町町)</li>
+                    </ul>
+                     <h4>② 山の田水系水道施設統合更新事業</h4>
+                     <p>山の田浄水場・大野浄水場の統合更新。</p>
+                     <ul>
+                         <li>特徴: 段階的更新、容量適正化、耐震性・経済性考慮</li>
+                         <li>R5概況: 配水本管更新 (開削工区 R3～, 推進工区 R5～)</li>
+                         <li>期間: 設計(H27), 建設(H28～R8予定)</li>
+                     </ul>
+                      <h4>③ 南部地区系基幹管路整備事業</h4>
+                      <p>広田浄水場～大塔町の配水本管更新。緊急時連絡管で災害リスク軽減。</p>
+                      <ul>
+                          <li>特徴: 複数工法、管路一本化、高耐震性</li>
+                          <li>R5概況: シールド工事開始 (早岐中～早岐駅)</li>
+                          <li>期間: 設計(H27), 建設(1期 H28～R10予定, 2期 R10～R15予定)</li>
+                      </ul>
+                     <h4>④ 第9期拡張事業</h4>
+                     <p>石木ダム建設関連 (県主体工事の一部負担)</p>
+
+                </div>
+                 <div class="card finance-card">
+                     <h2>💰 経営状況 (令和5年度)</h2>
+                     <ul>
+                         <li>事業収益: <span class="data-value">61億3,188万円</span> (1.9%減)
+                            <ul><li>給水収益: 1.4%減</li></ul>
+                         </li>
+                         <li>事業費用: <span class="data-value">57億6,597万円</span> (1.2%減)
+                            <ul>
+                                <li>浄水費: 5.1%増</li>
+                                <li>配給水費: 4.2%減</li>
+                                <li>減価償却費: 2.0%減</li>
+                            </ul>
+                         </li>
+                         <li>純利益: <span class="profit data-value">3億6,590万円</span></li>
+                     </ul>
+                     <details>
+                        <summary>損益計算書概要（クリックで展開）</summary>
+                        <table>
+                             <tr><th>項目</th><th>金額(円)</th></tr>
+                             <tr><td>営業収益</td><td>5,405,589,344</td></tr>
+                             <tr><td>営業費用</td><td>5,301,399,853</td></tr>
+                             <tr><td><strong>営業利益</strong></td><td><strong>104,189,491</strong></td></tr>
+                             <tr><td>営業外収益</td><td>706,362,922</td></tr>
+                             <tr><td>営業外費用</td><td>461,558,574</td></tr>
+                             <tr><td><strong>経常利益</strong></td><td><strong>348,993,839</strong></td></tr>
+                             <tr><td>特別利益</td><td>19,924,105</td></tr>
+                             <tr><td>特別損失</td><td>3,016,095</td></tr>
+                             <tr><td><strong>当年度純利益</strong></td><td class="profit"><strong>365,901,849</strong></td></tr>
+                        </table>
+                     </details>
+                 </div>
+            </div>
+
+            <div class="column">
+                <div class="card facility-card">
+                    <h2>📚 資料編 (抜粋)</h2>
+                    <h3>事業部編: 主要施設概要</h3>
+                    <h4>1. 取水施設 (認可)</h4>
+                    <p>合計取水能力: <span class="data-value">87,080 ㎥/日</span> (全22箇所)</p>
+                    <p>主な水源: ダム (山の田, 菰田, 川谷, 下の原等), 河川 (相浦川, 川棚川等), 地下水</p>
+
+                    <h4>2. 貯水施設</h4>
+                    <p>主なダム: 菰田 (146万㎥), 川谷 (161万㎥), 下の原 (218万㎥)</p>
+
+                    <h4>3. 浄水施設</h4>
+                    <p>主な浄水場: 山の田 (膜ろ過 50,600㎥/日), 広田 (急速 36,000㎥/日)</p>
+
+                    <h4>4. 送・配水施設</h4>
+                    <p>配水管総延長 (R5末): <span class="data-value">約 1,312 km</span> (佐世保, 吉井, 小佐々, 江迎合計)</p>
+                     <p>ポンプ所: 134箇所 / 配水池: 181箇所 (全地区合計)</p>
+                 </div>
+
+                 <div class="card water-quality-card">
+                     <h2>🔬 水質管理</h2>
+                     <p>水道法に基づき<span class="keyword-underline">水質検査計画</span>を策定・実施。</p>
+                     <h4>基本方針</h4>
+                     <ul>
+                         <li>浄水場給水栓・原水で検査</li>
+                         <li>法定51項目 + 管理必要項目</li>
+                         <li>自己検査 & 委託検査</li>
+                     </ul>
+                      <p>「<span class="highlight">佐世保市水安全計画</span>」に基づきリスク監視・制御。</p>
+                     <p>検査結果は市水道局HPで公表。</p>
+                </div>
+
+                <div class="card finance-card">
+                     <h2>💲 料金・財政 (抜粋)</h2>
+                     <h3>水道料金 (2か月, 税込)</h3>
+                     <p>一般用 (例: 50㎥使用時): <span class="data-value">11,173円</span></p>
+                     <ul>
+                         <li>基本料金(20㎥迄): 2,968円 (※10㎥以下は1,728円)</li>
+                         <li>超過料金(1㎥): 233円(～40㎥), 253円(～100㎥)...</li>
+                     </ul>
+                      <h3>令和5年度 財政状況</h3>
+                     <p>資産合計: <span class="data-value">764.8億円</span></p>
+                     <p>負債合計: <span class="data-value">464.2億円</span> (うち企業債 283.4億円)</p>
+                     <p>資本合計: <span class="data-value">300.6億円</span> (うち資本金 271.9億円)</p>
+                 </div>
+
+                 <div class="card stats-card">
+                     <h2>📈 業務実績 (令和5年度)</h2>
+                      <table>
+                         <tr><th>項目</th><th>数値</th></tr>
+                         <tr><td>給水人口</td><td><span class="data-value">230,527 人</span></td></tr>
+                         <tr><td>普及率</td><td><span class="data-value">98.3 %</span></td></tr>
+                         <tr><td>有収率</td><td><span class="data-value">88.3 %</span></td></tr>
+                         <tr><td>一日平均給水量</td><td><span class="data-value">73,169 ㎥</span></td></tr>
+                         <tr><td>供給単価 (1㎥)</td><td><span class="data-value">224.70 円</span></td></tr>
+                         <tr><td>給水原価 (1㎥)</td><td><span class="data-value">220.87 円</span></td></tr>
+                     </table>
+                 </div>
+
+            </div>
+        </div>
+
+        <footer>
+            出典: 佐世保市水道局 提供資料 (令和5年度事業概要等) を基に作成 | 生成AI支援によるグラフィックレコード風表現
+        </footer>
+    </div>
+</body>
+</html>
