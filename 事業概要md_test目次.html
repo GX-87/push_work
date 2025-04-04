@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目次 - 佐世保市水道局事業概要</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --color-fashion-1: #593C47;
+            --color-fashion-2: #F2E63D;
+            --color-fashion-3: #F2C53D;
+            --color-fashion-4: #F25C05;
+            --color-fashion-5: #F24405;
+
+            --font-handwriting: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', cursive;
+            --font-base: 'Zen Kurenaido', sans-serif;
+
+            --text-color-primary: #334155;
+            --text-color-secondary: #475569;
+            --heading-color: #1e40af;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --highlight-bg: #F2E63D;
+            --accent-color-1: var(--color-fashion-4);
+            --accent-color-2: var(--color-fashion-5);
+            --link-color: var(--heading-color);
+            --link-hover-color: var(--accent-color-2);
+        }
+
+        body {
+            font-family: var(--font-base);
+            line-height: 1.6;
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f9ff, #e6f0f5); /* Light blueish background */
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px; /* Suitable width for table of contents */
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px dashed var(--color-fashion-1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: var(--font-handwriting);
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        header .meta-info {
+            font-size: 14px;
+            color: var(--text-color-secondary);
+            text-align: right;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px; /* Increased padding */
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card::before {
+            content: '📖'; /* Book icon for TOC */
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-5deg);
+            font-size: 30px; /* Larger icon */
+            opacity: 0.8;
+        }
+
+        h2 {
+            font-family: var(--font-handwriting);
+            font-size: 24px; /* Slightly larger H2 */
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px dotted var(--accent-color-1);
+            padding-bottom: 10px;
+            display: inline-block;
+            text-align: center; /* Center align H2 */
+            width: 100%; /* Make H2 full width for centering */
+        }
+         h2::before {
+             content: ''; /* Remove icon from H2 as it's above the card */
+         }
+
+        ul.toc {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul.toc ul {
+            padding-left: 25px; /* Indentation level 1 */
+        }
+        ul.toc ul ul {
+            padding-left: 30px; /* Indentation level 2 */
+        }
+         ul.toc ul ul ul {
+            padding-left: 35px; /* Indentation level 3 */
+        }
+
+        ul.toc li {
+            margin-bottom: 12px; /* Increased spacing */
+            position: relative;
+            padding-left: 30px; /* Base padding for icon */
+            font-size: 15px; /* Slightly larger font for TOC items */
+        }
+        ul.toc li::before {
+            font-size: 1.2em; /* Adjust icon size */
+            position: absolute;
+            left: 0;
+            top: -2px; /* Adjust vertical alignment */
+            width: 25px; /* Ensure consistent icon spacing */
+            text-align: center;
+            color: var(--accent-color-1); /* Use accent color for icons */
+        }
+
+        /* Icons for TOC levels */
+        .toc-L1::before { content: '💧'; } /* 水道 */
+        .toc-L1.sewer::before { content: '🏞️'; } /* 下水道 */
+        .toc-L1.org::before { content: '🏢'; } /* 機構 */
+
+        .toc-L2::before { content: '🔹'; } /* Level 2 bullet */
+        .toc-L3::before { content: '🔸'; } /* Level 3 bullet */
+        .toc-L4::before { content: '▪️'; } /* Level 4 bullet */
+
+        ul.toc a {
+            text-decoration: none;
+            color: var(--link-color);
+            border-bottom: 1px dashed var(--link-color); /* Dashed underline */
+            transition: color 0.3s, border-color 0.3s;
+        }
+        ul.toc a:hover {
+            color: var(--link-hover-color);
+            border-bottom-color: var(--link-hover-color);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-color-secondary);
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+             header {
+                 flex-direction: column;
+                 align-items: flex-start;
+                 text-align: left;
+            }
+             header .meta-info {
+                 margin-top: 10px;
+                 text-align: left;
+            }
+             h2 {
+                 font-size: 22px;
+             }
+             ul.toc li {
+                 font-size: 14px;
+             }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>令和5年度 佐世保市水道局事業概要</h1>
+            <div class="meta-info">
+                （令和6年3月末現在）
+            </div>
+        </header>
+
+        <div class="main-content">
+
+            <div class="card">
+                <h2>目次</h2>
+                <ul class="toc">
+                    <li class="toc-L1"><a href="#1-水道">1 水道</a>
+                        <ul>
+                            <li class="toc-L2"><a href="#11-事業沿革">1.1 事業沿革</a></li>
+                            <li class="toc-L2"><a href="#12-令和5年度事業概況">1.2 令和5年度事業概況</a></li>
+                            <li class="toc-L2"><a href="#13-令和5年度主な出来事">1.3 令和5年度主な出来事</a></li>
+                            <li class="toc-L2"><a href="#14-資料編">1.4 資料編</a>
+                                <ul>
+                                    <li class="toc-L3"><a href="#141-事業部編">1.4.1 事業部編</a>
+                                        <ul>
+                                            <li class="toc-L4"><a href="#1411-水道">1.4.1.1 水道</a></li>
+                                            <li class="toc-L4"><a href="#1412-簡易水道">1.4.1.2 簡易水道</a></li>
+                                            <li class="toc-L4"><a href="#1413-水質">1.4.1.3 水質</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="toc-L3"><a href="#142-経営管理部編">1.4.2 経営管理部編</a>
+                                        <ul>
+                                            <li class="toc-L4"><a href="#1421-料金">1.4.2.1 料金</a></li>
+                                            <li class="toc-L4"><a href="#1422-財政">1.4.2.2 財政</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="toc-L3"><a href="#143-水道事業業務実績">1.4.3 水道事業業務実績</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="toc-L1 sewer"><a href="#2-下水道">2 下水道</a>
+                        <ul>
+                            <li class="toc-L2"><a href="#21-事業沿革">2.1 事業沿革</a></li>
+                            <li class="toc-L2"><a href="#22-令和5年度事業概況">2.2 令和5年度事業概況</a></li>
+                            <li class="toc-L2"><a href="#23-令和5年度主な出来事">2.3 令和5年度主な出来事</a></li>
+                            <li class="toc-L2"><a href="#24-資料編">2.4 資料編</a>
+                                <ul>
+                                    <li class="toc-L3"><a href="#241-事業部編">2.4.1 事業部編</a>
+                                        <ul>
+                                            <li class="toc-L4"><a href="#2411-下水道">2.4.1.1 下水道</a></li>
+                                            <li class="toc-L4"><a href="#2412-再生水">2.4.1.2 再生水</a></li>
+                                            <li class="toc-L4"><a href="#2413-水質">2.4.1.3 水質</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="toc-L3"><a href="#242-経営管理部編">2.4.2 経営管理部編</a>
+                                        <ul>
+                                            <li class="toc-L4"><a href="#2421-使用料及び負担金">2.4.2.1 使用料及び負担金</a></li>
+                                            <li class="toc-L4"><a href="#2422-財政">2.4.2.2 財政</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="toc-L3"><a href="#243-下水道事業業務実績">2.4.3 下水道事業業務実績</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="toc-L1 org"><a href="#3-機構">3 機構</a>
+                        <ul>
+                            <li class="toc-L2"><a href="#31-機構図">3.1 機構図</a></li>
+                            <li class="toc-L2"><a href="#32-事務分掌">3.2 事務分掌</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <footer>
+            佐世保市水道局 令和5年度 事業概要 目次 | 生成AI支援によるグラフィックレコード風表現
+        </footer>
+    </div>
+</body>
+</html>
