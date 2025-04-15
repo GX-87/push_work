@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佐世保市上下水道経営検討委員会 資料編</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        body {
+            font-family: 'Yomogi', sans-serif;
+            color: #334155;
+            line-height: 1.4;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            width: calc(33% - 20px);
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #F25C05, #F2E63D);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: left;
+        }
+        h2 {
+            font-size: 18px;
+            color: #1e40af;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: '📌';
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        h3 {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: #F2E63D;
+            padding: 0.1em 0.3em;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .note {
+            font-size: 12px;
+            color: #717171;
+            margin-top: 5px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 30px;
+        }
+        .header-left {
+            text-align: left;
+        }
+        .header-right {
+            text-align: right;
+            font-size: 14px;
+            color: #717171;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .column {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.04);
+            padding: 15px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            flex: 1; /* 残りのスペースを均等に分配 */
+            min-width: 200px; /* 最小幅を設定 */
+        }
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .data-table-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .data-table-card h3 {
+            margin-top: 0;
+        }
+        .handwritten-circle {
+            border: 2px solid #F25C05;
+            border-radius: 50%;
+            padding: 15px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .handwritten-arrow {
+            display: inline-block;
+            position: relative;
+            width: 50px;
+            height: 10px;
+            background-color: #F2C53D;
+            border-radius: 5px;
+        }
+        .handwritten-arrow::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -5px;
+            border-left: 15px solid #F2C53D;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        .handwritten-banner {
+            background-color: #F2E63D;
+            color: #593C47;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .handwritten-underline {
+            border-bottom: 3px solid #F24405;
+            padding-bottom: 5px;
+            display: inline;
+        }
+        .icon {
+            margin-right: 5px;
+            font-size: 1.1em;
+            vertical-align: middle;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .section-header h2 {
+            margin-left: 10px;
+        }
+        .page-info {
+            font-size: 12px;
+            color: #777;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1>佐世保市上下水道経営検討委員会 資料編</h1>
+        </div>
+        <div class="header-right">
+            2025年4月15日<br>出典：各種資料より
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📝</span> 出典・データ一覧</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>資料編P</th>
+                    <th>本編P</th>
+                    <th>出典元</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>目次</td>
+                </tr>
+                <tr>
+                    <td>2-5</td>
+                    <td>8, 40</td>
+                    <td>航空写真</td>
+                    <td>ダム下流域状況（山の田、転石、相当、歌ヶ浦）</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>各ダムのモニタリング（計測機器設置台数）</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>山の田ダム変位計設置個所</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>山の田ダム堤体モニタリング観測イメージ</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>佐世保市</td>
+                    <td>佐世保市内の浄水施設一覧</td>
+                </tr>
+                <tr>
+                    <td>10-13</td>
+                    <td>14</td>
+                    <td>佐世保市</td>
+                    <td>佐世保市都市計画マスタープラン（抜粋）</td>
+                </tr>
+                <tr>
+                    <td>14-16</td>
+                    <td>15</td>
+                    <td>佐世保市</td>
+                    <td>第7次佐世保市総合計画（抜粋）</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>17</td>
+                    <td>佐世保市</td>
+                    <td>更新対象管路累積率</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>25</td>
+                    <td>⾧崎県HP</td>
+                    <td>石木ダム建設事業工程</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>32</td>
+                    <td>佐世保市<br>水道局だより22号（H30）、渇水対策報告書</td>
+                    <td>給水サービスの不均衡（小佐々地区）</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>35</td>
+                    <td>佐世保市</td>
+                    <td>観測Pit（ピット）のイメージ図</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>37</td>
+                    <td>佐世保市</td>
+                    <td>パイロット事業位置図</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>42</td>
+                    <td>佐世保市</td>
+                    <td>導水管延⾧</td>
+                </tr>
+                <tr>
+                    <td>23-24</td>
+                    <td>48</td>
+                    <td>佐世保市</td>
+                    <td>投資計画（10年間）の事業費内訳</td>
+                </tr>
+            </tbody>
+        </table>
+    </div><div class="section">
+        <div class="section-header">
+            <h2><span class="icon">🏞️</span> 1. ダム下流域状況</h2>
+        </div>
+        <div class="grid-container">
+            <div class="column">
+                <h3>山の田ダム</h3>
+                <p><span class="handwritten-underline">所在地</span>: 佐世保川</p>
+                <p><span class="handwritten-underline">内容</span>: 下流域状況</p>
+                <p><span class="handwritten-underline">本編参照</span>: P8</p>
+                <p><span class="handwritten-underline">詳細</span>:</p>
+                <ul>
+                    <li>山の田ダム施設</li>
+                    <li>堤体正面</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>転石ダム</h3>
+                <p><span class="handwritten-underline">所在地</span>: 久保仁田川</p>
+                <p><span class="handwritten-underline">内容</span>: 下流域状況</p>
+                <p><span class="handwritten-underline">本編参照</span>: P8</p>
+            </div>
+            <div class="column">
+                <h3>相当ダム</h3>
+                <p><span class="handwritten-underline">所在地</span>: 牟田川</p>
+                <p><span class="handwritten-underline">内容</span>: 下流域状況</p>
+                <p><span class="handwritten-underline">本編参照</span>: P8</p>
+            </div>
+            <div class="column">
+                <h3>歌ヶ浦ダム</h3>
+                <p><span class="handwritten-underline">所在地</span>: 樋口川</p>
+                <p><span class="handwritten-underline">内容</span>: 下流域状況</p>
+                <p><span class="handwritten-underline">本編参照</span>: P8, P40</p>
+                <p><span class="handwritten-underline">関連施設</span>: 樋口ダム</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📊</span> 2. ダムモニタリング（計測機器設置台数）</h2>
+        </div>
+        <h3>概要</h3>
+        <ul>
+            <li>ダム堤体の歪みや動きを<span class="highlight">常時観測</span>。</li>
+            <li>ダムの特徴に応じた計測機器を設置し、<span class="highlight">基準値内で安全な状態を維持</span>。</li>
+        </ul>
+        <h3>変位計の特記事項</h3>
+        <ul>
+            <li>山の田ダムは古く、計測機器が未設置だったため、平成29年に変位計を設置。</li>
+            <li>上下左右鉛直方向の<span class="highlight">異常を監視</span>。</li>
+        </ul>
+        <h3>計測機器一覧</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>構造</th>
+                    <th>ダム名称</th>
+                    <th>計測機器</th>
+                    <th>数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>アース</td>
+                    <td>山の田ダム</td>
+                    <td>変位計</td>
+                    <td>7台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>地下水位計</td>
+                    <td>5台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>漏水量計</td>
+                    <td>2台</td>
+                </tr>
+                <tr>
+                    <td>重力式コンクリート</td>
+                    <td>転石ダム</td>
+                    <td>漏水量計</td>
+                    <td>2台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>揚圧力計</td>
+                    <td>7台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>相当ダム</td>
+                    <td>漏水量計</td>
+                    <td>2台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>揚圧力計</td>
+                    <td>10台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>下の原ダム</td>
+                    <td>漏水量計</td>
+                    <td>2台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>揚圧力計</td>
+                    <td>7台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>川谷ダム</td>
+                    <td>地下水位計</td>
+                    <td>3台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>漏水量計</td>
+                    <td>2台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>揚圧力計</td>
+                    <td>32台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>強震計測装置</td>
+                    <td>1台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>感震器</td>
+                    <td>2台</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>菰田ダム</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">本編参照: P9</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📍</span> 3. 山の田ダム変位計設置個所</h2>
+        </div>
+        <p class="note">本編参照: P9</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">🔍</span> 4. 山の田ダム堤体モニタリング観測イメージ</h2>
+        </div>
+        <h3>概要</h3>
+        <ul>
+            <li>変位計は<span class="highlight">GPS衛星</span>を利用し、30秒ごとに変位を測定。</li>
+            <li>1時間ごとに監視センターにデータ送信。</li>
+            <li>監視センターで解析し、異常時には水道局や関係部署に連絡。</li>
+            <li>緊急措置として<span class="highlight">ダム水位を下げる</span>対応を実施。</li>
+        </ul>
+        <p class="note">本編参照: P9</p>
+    </div>
+
+    <div class="section">
+<div class="section-header">
+            <h2><span class="icon">💧</span> 5. 佐世保市内の浄水施設一覧</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>事業区分</th>
+                    <th>施設名</th>
+                    <th>浄水能力（m³/日）</th>
+                    <th>建設年度（和暦）</th>
+                    <th>建設年度（西暦）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>水道事業</td>
+                    <td>山の田浄水場</td>
+                    <td>50,600</td>
+                    <td>H27</td>
+                    <td>2015</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>水道事業</td>
+                    <td>広田浄水場</td>
+                    <td>36,000</td>
+                    <td>S44</td>
+                    <td>1969</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>水道事業</td>
+                    <td>柚木浄水場</td>
+                    <td>14,000</td>
+                    <td>S34</td>
+                    <td>1959</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>水道事業</td>
+                    <td>田原浄水場</td>
+                    <td>3,520</td>
+                    <td>H5</td>
+                    <td>1993</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>水道事業</td>
+                    <td>潜龍浄水場</td>
+                    <td>2,100</td>
+                    <td>S32</td>
+                    <td>1957</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>水道事業</td>
+                    <td>平浄水場</td>
+                    <td>1,450</td>
+                    <td>S33</td>
+                    <td>1958</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>水道事業</td>
+                    <td>御橋浄水場</td>
+                    <td>1,440</td>
+                    <td>S52</td>
+                    <td>1977</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>水道事業</td>
+                    <td>世知原浄水場</td>
+                    <td>1,385</td>
+                    <td>H10</td>
+                    <td>1998</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>水道事業</td>
+                    <td>踊瀬浄水場</td>
+                    <td>1,200</td>
+                    <td>S37</td>
+                    <td>1962</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>簡易水道事業</td>
+                    <td>南鹿町浄水場</td>
+                    <td>1,180</td>
+                    <td>S34</td>
+                    <td>1959</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>簡易水道事業</td>
+                    <td>鹿町北部浄水場</td>
+                    <td>1,160</td>
+                    <td>S33</td>
+                    <td>1958</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>簡易水道事業</td>
+                    <td>江迎浄水場</td>
+                    <td>900</td>
+                    <td>S23</td>
+                    <td>1948</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>簡易水道事業</td>
+                    <td>歌ヶ浦浄水場</td>
+                    <td>786</td>
+                    <td>S57</td>
+                    <td>1982</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>簡易水道事業</td>
+                    <td>神浦浄水場</td>
+                    <td>700</td>
+                    <td>S37</td>
+                    <td>1962</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>簡易水道事業</td>
+                    <td>楠泊浄水場</td>
+                    <td>480</td>
+                    <td>S39</td>
+                    <td>1964</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>簡易水道事業</td>
+                    <td>宇久北部浄水場</td>
+                    <td>310</td>
+                    <td>S39</td>
+                    <td>1964</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>簡易水道事業</td>
+                    <td>神林浄水場</td>
+                    <td>298</td>
+                    <td>S36</td>
+                    <td>1961</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>簡易水道事業</td>
+                    <td>矢岳浄水場</td>
+                    <td>204</td>
+                    <td>S62</td>
+                    <td>1987</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>簡易水道事業</td>
+                    <td>平松浄水場</td>
+                    <td>109</td>
+                    <td>H3</td>
+                    <td>1991</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>簡易水道事業</td>
+                    <td>上野原浄水場</td>
+                    <td>104</td>
+                    <td>H4</td>
+                    <td>1992</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>簡易水道事業</td>
+                    <td>船ノ村浄水場</td>
+                    <td>93</td>
+                    <td>S52</td>
+                    <td>1977</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>簡易水道事業</td>
+                    <td>上木場浄水場</td>
+                    <td>70</td>
+                    <td>H1</td>
+                    <td>1989</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>簡易水道事業</td>
+                    <td>赤木浄水場</td>
+                    <td>64</td>
+                    <td>S62</td>
+                    <td>1987</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>簡易水道事業</td>
+                    <td>下宇戸・川谷浄水場</td>
+                    <td>48</td>
+                    <td>H6</td>
+                    <td>1994</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>簡易水道事業</td>
+                    <td>黒島本村浄水場</td>
+                    <td>40</td>
+                    <td>S54</td>
+                    <td>1979</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>簡易水道事業</td>
+                    <td>田代浄水場</td>
+                    <td>30</td>
+                    <td>S58</td>
+                    <td>1983</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>飲料水供給事業</td>
+                    <td>下開作浄水場</td>
+                    <td>26</td>
+                    <td>S62</td>
+                    <td>1987</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>飲料水供給事業</td>
+                    <td>上開作浄水場</td>
+                    <td>16</td>
+                    <td>H5</td>
+                    <td>1993</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">本編参照: P10</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📜</span> 6. 佐世保市都市計画マスタープラン（抜粋）</h2>
+        </div>
+        <p><span class="handwritten-underline">出典</span>: 佐世保市作成「佐世保市都市計画マスタープラン」</p>
+        <p><span class="handwritten-underline">本編参照</span>: P14</p>
+        <p><span class="handwritten-underline">ページ</span>: 10-13</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📄</span> 7. 第7次佐世保市総合計画（抜粋）</h2>
+        </div>
+        <p><span class="handwritten-underline">出典</span>: 佐世保市作成「第7次佐世保市総合計画（後期基本計画）」</p>
+        <p><span class="handwritten-underline">本編参照</span>: P15</p>
+        <p><span class="handwritten-underline">ページ</span>: 14-16</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📈</span> 8. 更新対象管路累積率</h2>
+        </div>
+        <h3>条件</h3>
+        <ul>
+            <li>基幹管路: 敷設後<span class="highlight">60年</span>経過で更新対象。</li>
+            <li>小口径管路: 敷設後<span class="highlight">80年</span>経過で更新対象。</li>
+            <li>更新を行わなかった場合の累積率を算出。</li>
+        </ul>
+        <h3>データ</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>経過年数</th>
+                    <th>基幹管路（m）</th>
+                    <th>基幹管路累積（m）</th>
+                    <th>基幹管路累積率</th>
+                    <th>小口径管路（m）</th>
+                    <th>小口径管路累積（m）</th>
+                    <th>小口径管路累積率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>49,835</td>
+                    <td>49,835</td>
+                    <td>0.10</td>
+                    <td>5,423</td>
+                    <td>5,423</td>
+                    <td>0.00</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>3,740</td>
+                    <td>53,575</td>
+                    <td>0.11</td>
+                    <td>0</td>
+                    <td>5,423</td>
+                    <td>0.00</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>12,164</td>
+                    <td>109,992</td>
+                    <td>0.22</td>
+                    <td>0</td>
+                    <td>5,423</td>
+                    <td>0.00</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>52</td>
+                    <td>138,833</td>
+                    <td>0.28</td>
+                    <td>0</td>
+                    <td>5,449</td>
+                    <td>0.00</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>4,090</td>
+                    <td>185,614</td>
+                    <td>0.37</td>
+                    <td>118</td>
+                    <td>22,959</td>
+                    <td>0.01</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>2,007</td>
+                    <td>220,905</td>
+                    <td>0.44</td>
+                    <td>7,144</td>
+                    <td>59,307</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>7,605</td>
+                    <td>276,614</td>
+                    <td>0.55</td>
+                    <td>759</td>
+                    <td>86,066</td>
+                    <td>0.04</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td>9,038</td>
+                    <td>362,657</td>
+                    <td>0.72</td>
+                    <td>36,253</td>
+                    <td>165,075</td>
+                    <td>0.09</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>10,911</td>
+                    <td>415,314</td>
+                    <td>0.82</td>
+                    <td>31,225</td>
+                    <td>362,991</td>
+                    <td>0.19</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>2,706</td>
+                    <td>452,673</td>
+                    <td>0.90</td>
+                    <td>26,080</td>
+                    <td>529,296</td>
+                    <td>0.28</td>
+                </tr>
+                <tr>
+                    <td>45</td>
+                    <td>1,259</td>
+                    <td>477,924</td>
+                    <td>0.95</td>
+                    <td>34,024</td>
+                    <td>798,710</td>
+                    <td>0.42</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>3,775</td>
+                    <td>490,222</td>
+                    <td>0.97</td>
+                    <td>32,213</td>
+                    <td>1,090,325</td>
+                    <td>0.57</td>
+                </tr>
+                <tr>
+                    <td>55</td>
+                    <td>437</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>35,807</td>
+                    <td>1,378,788</td>
+                    <td>0.72</td>
+                </tr>
+                <tr>
+                    <td>60</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>42,735</td>
+                    <td>1,595,482</td>
+                    <td>0.83</td>
+                </tr>
+                <tr>
+                    <td>65</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>24,519</td>
+                    <td>1,750,447</td>
+                    <td>0.91</td>
+                </tr>
+                <tr>
+                    <td>70</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>6,783</td>
+                    <td>1,815,338</td>
+                    <td>0.94</td>
+                </tr>
+                <tr>
+                    <td>75</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>14,425</td>
+                    <td>1,860,617</td>
+                    <td>0.97</td>
+                </tr>
+                <tr>
+                    <td>80</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>13,526</td>
+                    <td>1,923,876</td>
+                    <td>1.00</td>
+                </tr>
+                <tr>
+                    <td>85</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>-</td>
+                    <td>1,923,876</td>
+                    <td>1.00</td>
+                </tr>
+                <tr>
+                    <td>90</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>-</td>
+                    <td>1,923,876</td>
+                    <td>1.00</td>
+                </tr>
+                <tr>
+                    <td>95</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>-</td>
+                    <td>1,923,876</td>
+                    <td>1.00</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>-</td>
+                    <td>503,846</td>
+                    <td>1.00</td>
+                    <td>-</td>
+                    <td>1,923,876</td>
+                    <td>1.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">グラフ: 更新対象管路累積率（基幹管路・小口径管路）を経過年数で比較。</p>
+        <p class="note">本編参照: P17</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📅</span> 9. 石木ダム建設事業工程</h2>
+        </div>
+        <p><span class="handwritten-underline">出典</span>: ⾧崎県ホームページ</p>
+        <p class="note">本編参照: P25</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">⚠️</span> 10. 給水サービスの不均衡（小佐々地区）</h2>
+        </div>
+        <p><span class="handwritten-underline">出典</span>:</p>
+        <ul>
+            <li>佐世保市「水道局だより22号（H30）」</li>
+            <li>渇水対策報告書</li>
+        </ul>
+        <p class="note">本編参照: P32</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">🛠️</span> 11. 観測ピット（Pit）のイメージ図</h2>
+        </div>
+        <h3>概要</h3>
+        <ul>
+            <li>管路の<span class="highlight">常時監視ピット</span>の設置。</li>
+            <li>パイロット事業で山の田浄水場配水池の観測データと<span class="highlight">リンク</span>。</li>
+            <li>山の田水系配水管エリアの<span class="highlight">モニタリングを強化</span>。</li>
+        </ul>
+        <p class="note">本編参照: P35</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">🗺️</span> 12. パイロット事業位置図</h2>
+        </div>
+        <p class="note">本編参照: P37</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">📏</span> 13. 導水管延長</h2>
+        </div>
+        <p><span class="handwritten-underline">単位</span>: メートル（小数点以下切り捨て）
+<table>
+            <thead>
+                <tr>
+                    <th>導水管名</th>
+                    <th>延長（m）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>三本木線</td>
+                    <td>5,130</td>
+                </tr>
+                <tr>
+                    <td>新柚木線</td>
+                    <td>4,500</td>
+                </tr>
+                <tr>
+                    <td>転石線</td>
+                    <td>815</td>
+                </tr>
+                <tr>
+                    <td>相当線</td>
+                    <td>1,925</td>
+                </tr>
+                <tr>
+                    <td>菰田線</td>
+                    <td>6,583</td>
+                </tr>
+                <tr>
+                    <td>山の田線</td>
+                    <td>699</td>
+                </tr>
+                <tr>
+                    <td>川谷線</td>
+                    <td>2,484</td>
+                </tr>
+                <tr>
+                    <td>柚木線</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>岡本線</td>
+                    <td>2,000</td>
+                </tr>
+                <tr>
+                    <td>吉福線</td>
+                    <td>4,489</td>
+                </tr>
+                <tr>
+                    <td>川棚線</td>
+                    <td>13,901</td>
+                </tr>
+                <tr>
+                    <td>四条橋線</td>
+                    <td>1,705</td>
+                </tr>
+                <tr>
+                    <td>下の原線</td>
+                    <td>310</td>
+                </tr>
+                <tr>
+                    <td>上原線</td>
+                    <td>2,147</td>
+                </tr>
+                <tr>
+                    <td>佐々線</td>
+                    <td>9,831</td>
+                </tr>
+                <tr>
+                    <td>相浦線</td>
+                    <td>5,001</td>
+                </tr>
+                <tr>
+                    <td>吉井町</td>
+                    <td>986</td>
+                </tr>
+                <tr>
+                    <td>小佐々町</td>
+                    <td>9,716</td>
+                </tr>
+                <tr>
+                    <td>江迎町</td>
+                    <td>2,708</td>
+                </tr>
+                <tr>
+                    <td>6簡水</td>
+                    <td>2,273</td>
+                </tr>
+                <tr>
+                    <td>世知原町</td>
+                    <td>5,416</td>
+                </tr>
+                <tr>
+                    <td>鹿町町</td>
+                    <td>10,387</td>
+                </tr>
+                <tr>
+                    <td>宇久町</td>
+                    <td>7,801</td>
+                </tr>
+                <tr>
+                    <td>**合計**</td>
+                    <td>**100,927**</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">注記: 合計は小数点以下の端数を含む。</p>
+        <p class="note">本編参照: P42</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2><span class="icon">💰</span> 14. 投資計画（10年間）の事業費内訳</h2>
+        </div>
+        <p><span class="handwritten-underline">単位</span>: 百万円</p>
+        <p><span class="handwritten-underline">期間</span>: R8～R17</p>
+
+        <h3>石木ダム負担金</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>期間</th>
+                    <th>事業費</th>
+                    <th>目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>石木ダム負担金</td>
+                    <td>R8～R14</td>
+                    <td>6,603</td>
+                    <td>水源確保</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>再構築事業</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>期間</th>
+                    <th>事業費</th>
+                    <th>目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>広田水系水道施設統合事業（1期工事）</td>
+                    <td>R8～R17</td>
+                    <td>25,470</td>
+                    <td>水源確保</td>
+                </tr>
+                <tr>
+                    <td>広田水系基幹管路更新事業【第1次】（φ1000/φ700）大塔脇崎交差点まで</td>
+                    <td>R8～R17</td>
+                    <td>6,092</td>
+                    <td>更新需要の削減</td>
+                </tr>
+                <tr>
+                    <td>山の田水系水道施設統合事業</td>
+                    <td>R8～R17</td>
+                    <td>1,170</td>
+                    <td>更新需要の削減</td>
+                </tr>
+                <tr>
+                    <td>導水管更新事業（吉福/菰田/柚木水系）</td>
+                    <td>R8～R17</td>
+                    <td>10,585</td>
+                    <td>安全確保</td>
+                </tr>
+                <tr>
+                    <td>山の田水系配水管更新事業（中部線）</td>
+                    <td>R8～R17</td>
+                    <td>1,017</td>
+                    <td>安全確保</td>
+                </tr>
+                <tr>
+                    <td>北部エリア送水管整備事業【第1次】（中里～田原）</td>
+                    <td>R8～R17</td>
+                    <td>2,645</td>
+                    <td>更新需要の削減</td>
+                </tr>
+                <tr>
+                    <td>簡易水道統合事業（宮地区）</td>
+                    <td>R8～R17</td>
+                    <td>3,032</td>
+                    <td>その他</td>
+                </tr>
+                <tr>
+                    <td>ダム長寿命化対策事業（歌ヶ浦/山の田）</td>
+                    <td>R8～R17</td>
+                    <td>365</td>
+                    <td>安全確保</td>
+                </tr>
+                <tr>
+                    <td>北部エリア送水管整備事業【第2次】（大野～中里）</td>
+                    <td>R8～R17</td>
+                    <td>3,322</td>
+                    <td>更新需要の削減</td>
+                </tr>
+                <tr>
+                    <td>上水道施設再構築事業（上原地区）</td>
+                    <td>R8～R17</td>
+                    <td>80</td>
+                    <td>更新需要の削減</td>
+                </tr>
+                <tr>
+                    <td>簡易水道施設再構築事業（宇久/佐世保簡水）</td>
+                    <td>R8～R17</td>
+                    <td>298</td>
+                    <td>更新需要の削減</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">小計</td>
+                    <td></td>
+                    <td style="font-weight: bold;">54,076</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>更新事業</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>期間</th>
+                    <th>事業費</th>
+                    <th>目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>経年化（上水）施設更新事業（ランクA1･A2・B）</td>
+                    <td>R8～R17</td>
+                    <td>12,765</td>
+                    <td>安全確保</td>
+                </tr>
+                <tr>
+                    <td>水運用総合監理導入事業</td>
+                    <td>R8～R17</td>
+                    <td>660</td>
+                    <td>リスクマネジメント</td>
+                </tr>
+                <tr>
+                    <td>経年化（簡易水道）施設更新事業（ランクA1･A2・B）</td>
+                    <td>R8～R17</td>
+                    <td>1,797</td>
+                    <td>安全確保</td>
+                </tr>
+                <tr>
+                    <td>関係機関等からの依頼（移設工事）</td>
+                    <td>R8～R17</td>
+                    <td>2,350</td>
+                    <td>その他</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">小計</td>
+                    <td></td>
+                    <td style="font-weight: bold;">17,572</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>老朽化対策事業</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>期間</th>
+                    <th>事業費</th>
+                    <th>目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>老朽化（上水）施設対策事業</td>
+                    <td>R8～R17</td>
+                    <td>11,744</td>
+                    <td>安全確保</td>
+                </tr>
+                <tr>
+                    <td>老朽化（簡易水道）施設対策事業</td>
+                    <td>R8～R17</td>
+                    <td>2,302</td>
+                    <td>安全確保</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">小計</td>
+                    <td></td>
+                    <td style="font-weight: bold;">14,046</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>監督経費</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>期間</th>
+                    <th>事業費</th>
+                    <th>目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>監督経費（バルブ切替・通水等）</td>
+                    <td>R8～R17</td>
+                    <td>110</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">小計</td>
+                    <td></td>
+                    <td style="font-weight: bold;">110</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>施設修繕費</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>期間</th>
+                    <th>事業費</th>
+                    <th>目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>施設修繕費</td>
+                    <td>R8～R17</td>
+                    <td>3,456</td>
+                    <td>リスクマネジメント</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">小計</td>
+                    <td></td>
+                    <td style="font-weight: bold;">3,456</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>合計（目的別）</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>目的</th>
+                    <th>事業費（百万円）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>水源確保</td>
+                    <td>32,073</td>
+                </tr>
+                <tr>
+                    <td>更新需要の削減</td>
+                    <td>13,607</td>
+                </tr>
+                <tr>
+                    <td>リスクマネジメント</td>
+                    <td>4,116</td>
+                </tr>
+                <tr>
+                    <td>安全確保</td>
+                    <td>40,685</td>
+                </tr>
+                <tr>
+                    <td>その他</td>
+                    <td>5,382</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">合計</td>
+                    <td style="font-weight: bold;">95,863</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">本編参照: P48, ページ: 23-24</p>
+    </div>
+
+    <footer>
+        <p style="font-size: 12px; color: #777; text-align: center; margin-top: 30px;">
+            本資料は、佐世保市上下水道経営検討委員会の資料に基づき作成されました。
+        </p>
+    </footer>
+</body>
+</html>
