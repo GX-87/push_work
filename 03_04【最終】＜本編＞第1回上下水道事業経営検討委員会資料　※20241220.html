@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佐世保市水道事業の経営戦略 - グラフィックレコード風インフォグラフィック</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+        body {
+            font-family: 'Yomogi', sans-serif;
+            color: #334155;
+            line-height: 1.4;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px 0;
+            border-bottom: 2px dashed #475569;
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(to right, #F2E63D, #F24405);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .header-info {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .column {
+            width: calc(33.33% - 20px);
+            margin-right: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+        }
+
+        .column:last-child {
+            margin-right: 0;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: #1e40af;
+            font-family: 'Zen Kurenaido', sans-serif;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '📌';
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .subsubsection-title {
+            font-size: 14px;
+            color: #334155;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .handwritten {
+            font-family: 'Yomogi', cursive;
+        }
+
+        .keyword {
+            font-weight: bold;
+            color: #F25C05;
+            text-decoration: underline wavy #F2C53D;
+        }
+
+        .arrow {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 1.2em;
+        }
+
+        .icon {
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 1em;
+            vertical-align: middle;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 12px;
+        }
+
+        .data-table th {
+            background-color: #f2f2f2;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: right;
+            font-size: 12px;
+            color: #718096;
+            margin-top: 20px;
+        }
+
+        /* 手書き風囲み線 (CSSだけで表現するのは難しいですが、イメージとして) */
+        .box {
+            border: 2px dashed #F24405;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* 吹き出し (CSSだけで表現するのは難しいですが、イメージとして) */
+        .speech-bubble {
+            background: #F2E63D;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: #F2E63D;
+            border-bottom: 0;
+            margin-left: -10px;
+            margin-bottom: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="header-title handwritten">佐世保市水道事業の経営戦略</h1>
+            <div class="header-info">令和6年12月20日 / 佐世保市水道局</div>
+        </div>
+
+        <div class="column">
+            <h2 class="section-title">はじめに</h2>
+            <div class="card">
+                <h3 class="subsection-title">1-1 水道の役割と仕組み <span class="icon">📝</span></h3>
+                <h4 class="subsubsection-title">水道の役割 (4p)</h4>
+                <ul>
+                    <li><span class="keyword">市民生活の支援</span>: <span class="handwritten">公衆衛生のライフライン</span></li>
+                    <li><span class="keyword">都市インフラ</span>: <span class="handwritten">まちづくりの基盤</span></li>
+                    <li><span class="keyword">水道法 第一条</span>: <span class="handwritten">清浄で豊富な水を低廉に供給</span> <span class="icon"> قانون</span></li>
+                    <li><span class="keyword">給水義務 (第十五条)</span>: <span class="handwritten">正当な理由なく拒否不可、常時供給</span> <span class="icon"> ✍️</span></li>
+                    <li><span class="keyword">ナショナルミニマム</span>: <span class="handwritten">最低限保障すべき行政水準</span> <span class="icon"> 📊</span></li>
+                </ul>
+                <h4 class="subsubsection-title">水道のしくみ (5p)</h4>
+                <ol>
+                    <li><span class="keyword">取水・導水</span>: <span class="handwritten">河川水が主、小規模水源を集約</span> <span class="icon"> 💧➡️</span></li>
+                    <li><span class="keyword">浄水・検査</span>: <span class="handwritten">急速・膜ろ過、水質検査で安全確保</span> <span class="icon"> 🧪➡️</span></li>
+                    <li><span class="keyword">送水・配水</span>: <span class="handwritten">パイプラインで各家庭へ、地形考慮しポンプ圧送</span> <span class="icon"> ➡️🏠</span></li>
+                    <li><span class="keyword">管理</span>: <span class="handwritten">整備・更新、運転・維持管理</span> <span class="icon"> 🛠️</span></li>
+                    <li><span class="keyword">目的</span>: <span class="handwritten">一連のプロセスを持続させ、常時給水を確保</span> <span class="icon"> 🔄</span></li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3 class="subsection-title">1-2 水道事業を取り巻く全国的な状況 <span class="icon"> 🌐</span></h3>
+                <h4 class="subsubsection-title">水道を取り巻く全国の社会環境の変化 (7-8p)</h4>
+                <ul>
+                    <li><span class="keyword">人口減少の継続</span>: <span class="handwritten">給水収益の減少</span> <span class="icon"> 📉</span></li>
+                    <li><span class="keyword">一斉更新時期の到来</span>: <span class="handwritten">高度成長期整備の施設が更新期</span> <span class="icon"> ⏳</span></li>
+                    <li><span class="keyword">施設の縮小困難</span>: <span class="handwritten">人口減少でも施設は残存、負担増大</span> <span class="icon"> 🏘️➡️👤⬇️</span></li>
+                </ul>
+                <div class="speech-bubble">
+                    <p><span class="keyword">課題</span>: <span class="handwritten">独立採算制、人口減で一人当たり負担増、長期持続可能な経営計画が必要</span></p>
+                </div>
+                <h4 class="subsubsection-title">≪参考≫ 全国の料金改定の状況 (9p)</h4>
+                <p><span class="handwritten">類似団体で料金改定が進む</span> <span class="icon"> 💰⬆️</span></p>
+                <details>
+                    <summary><span class="handwritten">全国の料金改定状況（類似団体、R3～）</span></summary>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>都道府県名</th><th>都市名</th><th>料金改定時期</th><th>平均改定率</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>北海道</td><td>釧路市</td><td>R4.4</td><td>2.9%</td></tr>
+                            <tr><td>青森県</td><td>弘前市</td><td>R7.5</td><td>10.9%</td></tr>
+                            <tr><td>茨城県</td><td>つくば市</td><td>R7.4</td><td>15-23%</td></tr>
+                            <tr><td>群馬県</td><td>伊勢崎市</td><td>R6.4</td><td>7.2%</td></tr>
+                            <tr><td>千葉県</td><td>佐倉市</td><td>R4.4</td><td>7.2%</td></tr>
+                            <tr><td>神奈川県</td><td>秦野市</td><td>R5.10</td><td>7%</td></tr>
+                            <tr><td>山梨県</td><td>甲府市</td><td>R6.4</td><td>9.37%</td></tr>
+                            <tr><td>静岡県</td><td>富士市</td><td>R5.10</td><td>13.01%</td></tr>
+                            <tr><td>三重県</td><td>津市</td><td>R4.4</td><td>28%</td></tr>
+                            <tr><td>京都府</td><td>宇治市</td><td>R4.10</td><td>14.4%</td></tr>
+                            <tr><td>大阪府</td><td>岸和田市</td><td>R6.4</td><td>18.9%</td></tr>
+                            <tr><td>兵庫県</td><td>宝塚市</td><td>R7.4</td><td>19%</td></tr>
+                            <tr><td>広島県</td><td>呉市</td><td>R6.4</td><td>6.6%</td></tr>
+                            <tr><td>山口県</td><td>山口市</td><td>R7.4</td><td>15%</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+                <details>
+                    <summary><span class="handwritten">長崎県内の水道料金改定状況（R2～）</span></summary>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>都道府県名</th><th>都市名</th><th>料金改定時期</th><th>平均改定率</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>長崎県</td><td>新上五島町</td><td>R2.9</td><td>29.1%</td></tr>
+                            <tr><td>長崎県</td><td>雲仙市</td><td>R5.10</td><td>16%</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+            </div>
+        </div>
+
+        <div class="column">
+            <h2 class="section-title">1-3 経営戦略とは <span class="icon"> 🧭</span></h2>
+            <div class="card">
+                <h4 class="subsubsection-title">経営戦略策定・改定の推進 (11p)</h4>
+                <ul>
+                    <li><span class="keyword">目的</span>: <span class="handwritten">現状・課題把握し「投資財政計画」策定</span> <span class="icon"> 🔍➡️📝</span></li>
+                    <li><span class="keyword">国のガイドライン</span>: <span class="handwritten">計画期間10年以上、投資・財源試算、料金算定</span> <span class="icon"> 🏛️</span></li>
+                    <li><span class="keyword">佐世保市の対応</span>: <span class="handwritten">コロナ禍等踏まえ長期戦略検討</span> <span class="icon"> 😷➡️📈</span></li>
+                    <li><span class="keyword">国の要求</span>: <span class="handwritten">将来の投資・財源、料金水準等定めた経営戦略</span> <span class="icon"> 🎯</span></li>
+                </ul>
+                <h4 class="subsubsection-title">経営戦略の検討プロセス (12p)</h4>
+                <ol>
+                    <li><span class="keyword">現状・課題の把握</span> <span class="icon"> 📊</span></li>
+                    <li><span class="keyword">経営目標・事業目標の設定</span> <span class="icon"> 🎯</span></li>
+                    <li><span class="keyword">投資計画の策定</span> <span class="icon"> 💰➡️🏗️</span></li>
+                    <li><span class="keyword">財政計画の策定</span> <span class="icon"> 💰➡️🏦</span></li>
+                    <li><span class="keyword">収支均衡策の検討</span> <span class="icon"> ⚖️</span></li>
+                </ol>
+                <p><span class="handwritten">審議事項</span>: <span class="handwritten">現状・課題、見通し、アプローチ、目標、経営努力、投資計画、収支比較</span></p>
+                <p><span class="handwritten">流れ</span>: <span class="handwritten">諮問</span> <span class="arrow">➡️</span> <span class="handwritten">審議</span> <span class="arrow">➡️</span> <span class="handwritten">答申</span> <span class="arrow">➡️</span> <span class="handwritten">市議会決定</span></p>
+                <p><span class="handwritten">範囲</span>: <span class="handwritten">水道事業会計内での検討</span> <span class="icon"> 会計</span></p>
+            </div>
+        </div>
+    </div>
+    ```
+<div class="column">
+            <h2 class="section-title">対応すべき問題・課題</h2>
+            <div class="card">
+                <h3 class="subsection-title">2-1 佐世保市特有の課題 <span class="icon"> ⚓️</span></h3>
+                <h4 class="subsubsection-title">①斜面都市・旧軍港市 (15-20p)</h4>
+                <ul>
+                    <li><span class="keyword">地勢条件</span>: <span class="handwritten">複雑な斜面、管路延長、多数のポンプ・配水池</span> <span class="icon"> ⛰️➡️<0xF0><0x9F><0x9B><0x9A>⬆️</span></li>
+                    <li><span class="keyword">都市の成り立ち</span>: <span class="handwritten">旧海軍と別々整備、継ぎ接ぎ拡張、施設老朽化</span> <span class="icon"> 🚢➡️🔗➡️⏳</span></li>
+                    <li><span class="keyword">管路延長の全国比較</span>: <span class="handwritten">全国最多水準、広域小規模水源、斜面地送水</span> <span class="icon"> 📏⬆️</span></li>
+                    <li><span class="keyword">施設数の全国比較</span>: <span class="handwritten">浄水場数4位、配水池数1位</span> <span class="icon"> 🏭➡️💧⬆️</span></li>
+                    <li><span class="keyword">歴史的背景による老朽化</span>: <span class="handwritten">ダム・管路の老朽化進行</span> <span class="icon"> 🕰️➡️朽</span></li>
+                </ul>
+                <div class="speech-bubble">
+                    <p><span class="keyword">課題</span>: <span class="handwritten">施設数多さと老朽化への計画策定</span></p>
+                </div>
+
+                <h4 class="subsubsection-title">②水源不足 (21-27p)</h4>
+                <ul>
+                    <li><span class="keyword">渇水危機の現状</span>: <span class="handwritten">頻繁な渇水、脆弱な状況続く</span> <span class="icon"> ⚠️</span></li>
+                    <li><span class="keyword">地勢条件による水源不足</span>: <span class="handwritten">小河川のみ、地下水乏しい、恒常的な不足</span> <span class="icon"> 💧⬇️</span></li>
+                    <li><span class="keyword">水源不足の全国比較</span>: <span class="handwritten">利用率ギリギリ、余裕率マイナス</span> <span class="icon"> 📊🔴</span></li>
+                    <li><span class="keyword">渇水の頻度</span>: <span class="handwritten">ほぼ2年に1度危機、平成の大渇水</span> <span class="icon"> 🌊➡️💸</span></li>
+                    <li><span class="keyword">節水型経営</span>: <span class="handwritten">取水運用、逓増料金、企業誘致</span> <span class="icon"> 💧🤏➡️💰⬇️</span></li>
+                    <li><span class="keyword">施設管理上の課題</span>: <span class="handwritten">ダム老朽化、取水設備更新喫緊</span> <span class="icon">  डैम⏳➡️🛠️</span></li>
+                </ul>
+                <details>
+                    <summary><span class="handwritten">ダム老朽化</span></summary>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ダム名</th><th>建設主体</th><th>建築年次</th><th>経過年数 (R6.4)</th><th>法定耐用年数 (本体/取水設備)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>山の田ダム</td><td>旧海軍</td><td>明治40年</td><td>117年</td><td>60年/40年</td></tr>
+                            <tr><td>転石ダム</td><td>旧海軍</td><td>昭和2年</td><td>97年</td><td>80年/40年</td></tr>
+                            <tr><td>菰田ダム</td><td>佐世保市</td><td>昭和15年</td><td>84年</td><td>60年/40年</td></tr>
+                            <tr><td>相当ダム</td><td>旧海軍</td><td>昭和19年</td><td>80年</td><td>60年/40年</td></tr>
+                            <tr><td>川谷ダム</td><td>佐世保市</td><td>昭和30年</td><td>69年</td><td>60年/40年</td></tr>
+                            <tr><td>下の原ダム</td><td>佐世保市</td><td>昭和43年</td><td>56年</td><td>60年/40年</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+                <div class="speech-bubble">
+                    <p><span class="keyword">課題</span>: <span class="handwritten">水源不足早期解消が喫緊</span></p>
+                </div>
+            </div>
+        </div>
+    ```
+<div class="column">
+            <div class="card">
+                <h3 class="subsection-title">2-1 佐世保市特有の課題 <span class="icon"> ⚓️</span></h3>
+                <h4 class="subsubsection-title">③施設効率（採算性）の課題 (28-34p)</h4>
+                <ul>
+                    <li><span class="keyword">事業環境と施設効率</span>: <span class="handwritten">小規模都市ほど効率低い傾向</span> <span class="icon"> 🏘️⬇️➡️⚙️⬇️</span></li>
+                    <li><span class="keyword">佐世保市の事業環境</span>: <span class="handwritten">人口減少大、高度処理、複雑地形</span> <span class="icon"> 📉➡️🧪⬆️➡️⛰️</span></li>
+                    <li><span class="keyword">施設効率の全国比較</span>: <span class="handwritten">配水量あたり管路延長・配水池数・浄水場数ワースト水準</span> <span class="icon"> ⚙️🔴⬇️</span></li>
+                    <li><span class="keyword">事業環境と料金水準</span>: <span class="handwritten">効率悪いほど料金高い傾向、佐世保市は中位</span> <span class="icon"> ⚙️⬇️➡️💰⬆️?</span></li>
+                    <li><span class="keyword">事業環境と職員数</span>: <span class="handwritten">効率悪いほど職員数多い傾向、佐世保市は妥当</span> <span class="icon"> ⚙️⬇️➡️🧑‍🤝‍🧑⬆️?</span></li>
+                </ul>
+                <details>
+                    <summary><span class="handwritten">施設効率の全国比較 (人口15万～30万人、R4水道統計)</span></summary>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>指標</th><th>順位 (65団体中)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>配水量あたり管路延長</td><td>4位</td></tr>
+                            <tr><td>配水量あたり配水池数</td><td>1位</td></tr>
+                            <tr><td>配水量あたり浄水場数</td><td>4位</td></tr>
+                            <tr><td>給水人口あたり浄水場数</td><td>4位</td></tr>
+                            <tr><td>給水人口あたり管路延長</td><td>1位</td></tr>
+                            <tr><td>給水人口あたり配水池数</td><td>3位</td></tr>
+                            <tr><td>表流水・ダム割合</td><td>3位 (97.8%)</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+                <div class="speech-bubble">
+                    <p><span class="keyword">小括</span>: <span class="handwritten">施設数削減、配置最適化で効率改善</span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="subsection-title">2-2 社会要因の変化による課題 <span class="icon"> 🌍➡️👤⬇️</span></h3>
+                <h4 class="subsubsection-title">①人口減少・施設老朽化・物価高騰 (38-41p)</h4>
+                <h4 class="subsubsection-title">人口減少 (38p)</h4>
+                <ul>
+                    <li><span class="keyword">状況</span>: <span class="handwritten">緩やかな減少続く、コロナ禍以降加速</span> <span class="icon"> 📉➡️加速</span></li>
+                    <li><span class="keyword">影響</span>: <span class="handwritten">給水収益減少</span> <span class="icon"> 💰⬇️</span></li>
+                    <li><span class="keyword">政策</span>: <span class="handwritten">人口減少対策は重要、水道が支援</span> <span class="icon"> 🤝</span></li>
+                </ul>
+                <h4 class="subsubsection-title">施設老朽化と一斉更新 (39-40p)</h4>
+                <ul>
+                    <li><span class="keyword">状況</span>: <span class="handwritten">高度成長期～平成初頭の集中整備施設が更新期</span> <span class="icon"> ⏳➡️🛠️</span></li>
+                    <li><span class="keyword">見通し</span>: <span class="handwritten">経年化率R25に75%、R42に81%</span> <span class="icon"> 📈</span></li>
+                    <li><span class="keyword">現状</span>: <span class="handwritten">年間更新約10km、このペースでは20年後75%</span> <span class="icon"> 🐌</span></li>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">収入減、経費増、投資の長期平準化とリスク考慮</span> <span class="icon"> 💸➡️⚠️</span></li>
+                </ul>
+                <h4 class="subsubsection-title">物価高騰 (41p)</h4>
+                <ul>
+                    <li><span class="keyword">状況</span>: <span class="handwritten">燃料費、材料費、薬品費、労務単価増加</span> <span class="icon"> ⛽️⬆️🧱⬆️🧪⬆️👷⬆️</span></li>
+                    <li><span class="keyword">影響</span>: <span class="handwritten">供給、整備・更新、維持管理コスト増</span> <span class="icon"> 💸⬆️</span></li>
+                    <li><span class="keyword">特徴</span>: <span class="handwritten">短期変動的要素、長期計画に影響</span> <span class="icon"> 🌡️➡️📅</span></li>
+                </ul>
+            </div>
+        </div>
+    ```
+<div class="column">
+            <div class="card">
+                <h3 class="subsection-title">2-2 社会要因の変化による課題 <span class="icon"> 🌍➡️👤⬇️</span></h3>
+                <h4 class="subsubsection-title">②財政状況 (42-46p) <span class="icon"> 🏦</span></h4>
+                <h4 class="subsubsection-title">水道事業経営のしくみ</h4>
+                <ul>
+                    <li><span class="keyword">独立採算制</span>: <span class="handwritten">料金で運営、税金ではない</span> <span class="icon"> 💰</span></li>
+                    <li><span class="keyword">会計</span>: <span class="handwritten">収益的収支と資本的収支</span> <span class="icon"> 🧾</span></li>
+                    <li><span class="keyword">自己資金</span>: <span class="handwritten">利益・減価償却費を蓄積、施設整備等に充当</span> <span class="icon"> 貯</span></li>
+                    <li><span class="keyword">減価償却費</span>: <span class="handwritten">資産価値減少分を費用計上、現金を留保</span> <span class="icon"> ⬇️➡️💰</span></li>
+                </ul>
+                <h4 class="subsubsection-title">財政状況</h4>
+                <ul>
+                    <li><span class="keyword">総収益と総費用</span>: <span class="handwritten">H22料金改定後持ち直すも、近年悪化</span> <span class="icon"> 📈⬇️</span></li>
+                    <li><span class="keyword">純利益と自己資金</span>: <span class="handwritten">減少傾向、今後の見通し必要</span> <span class="icon"> 📉➡️❓</span></li>
+                </ul>
+                <details>
+                    <summary><span class="handwritten">純利益と自己資金の推移</span></summary>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>年度</th><th>自己資金残高 (百万円)</th><th>純利益 (百万円)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>H22</td><td>1,951</td><td>993</td></tr>
+                            <tr><td>H23</td><td>3,068</td><td>1,171</td></tr>
+                            <tr><td>H24</td><td>3,843</td><td>1,141</td></tr>
+                            <tr><td>H25</td><td>4,344</td><td>1,018</td></tr>
+                            <tr><td>H26</td><td>3,428</td><td>-4</td></tr>
+                            <tr><td>H27</td><td>3,162</td><td>727</td></tr>
+                            <tr><td>H28</td><td>3,053</td><td>747</td></tr>
+                            <tr><td>H29</td><td>3,215</td><td>830</td></tr>
+                            <tr><td>H30</td><td>3,238</td><td>648</td></tr>
+                            <tr><td>R1</td><td>3,368</td><td>587</td></tr>
+                            <tr><td>R2</td><td>3,450</td><td>520</td></tr>
+                            <tr><td>R3</td><td>3,398</td><td>504</td></tr>
+                            <tr><td>R4</td><td>3,178</td><td>415</td></tr>
+                            <tr><td>R5</td><td>2,996</td><td>366</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+            </div>
+
+            <div class="card">
+                <h3 class="subsection-title">③財政の今後の見通し (47-57p) <span class="icon"> 🔮</span></h3>
+                <h4 class="subsubsection-title">国内経済等の動向 (48p)</h4>
+                <ul>
+                    <li><span class="keyword">予測</span>: <span class="handwritten">アフターコロナ、円安でインバウンド増、DX・GX投資増</span> <span class="icon"> 📈🌍</span></li>
+                    <li><span class="keyword">佐世保市・長崎県</span>: <span class="handwritten">景気回復兆候、給水収益回復期待</span> <span class="icon"> ⬆️🗾</span></li>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">経理的確実性重視、不確定な収益増は見込めず</span> <span class="icon"> 🤔</span></li>
+                    <li><span class="keyword">必要</span>: <span class="handwritten">市政発展支える投資・財政計画</span> <span class="icon"> 🏗️💰</span></li>
+                </ul>
+                <h4 class="subsubsection-title">投資と財源の計画策定 (50-51p)</h4>
+                <ul>
+                    <li><span class="keyword">投資（支出）</span>: <span class="handwritten">安全確保、上振れリスク考慮</span> <span class="icon"> 💰➡️🛡️⚠️</span></li>
+                    <li><span class="keyword">財源（収入）</span>: <span class="handwritten">下振れリスクで安全確保</span> <span class="icon"> 💰➡️✅⬇️</span></li>
+                </ul>
+                <h4 class="subsubsection-title">行政人口の見通し (52p)</h4>
+                <ul>
+                    <li><span class="keyword">推計</span>: <span class="handwritten">最低20万人（中核市要件）</span> <span class="icon"> 👤➡️20万</span></li>
+                    <li><span class="keyword">実績・予測</span>: <span class="handwritten">R5: 234,504人、減少率緩和予測</span> <span class="icon"> 📈</span></li>
+                    <li><span class="keyword">評価</span>: <span class="handwritten">妥当な推計</span> <span class="icon"> 👍</span></li>
+                </ul>
+                <h4 class="subsubsection-title">市民一人一日あたり生活用水使用水量の見通し (53p)</h4>
+                <ul>
+                    <li><span class="keyword">現状</span>: <span class="handwritten">増加傾向、R5: 198ℓ/日（全国最少水準）</span> <span class="icon"> 💧⬆️🤏</span></li>
+                    <li><span class="keyword">推計</span>: <span class="handwritten">R15: 205ℓ/日、R25: 210ℓ/日、緩やか回復想定</span> <span class="icon"> 📈</span></li>
+                </ul>
+                <h4 class="subsubsection-title">企業活動・都市活動の水使用見通し (54p)</h4>
+                <ul>
+                    <li><span class="keyword">現状</span>: <span class="handwritten">人口減で緩やか減少、コロナ禍で急落、回復傾向</span> <span class="icon"> 📉➡️📉急➡️📈</span></li>
+                    <li><span class="keyword">推計</span>: <span class="handwritten">R5: 13,594㎥/日、R25: 12,471㎥/日、減少傾向へ</span> <span class="icon"> 📉</span></li>
+                </ul>
+                <h4 class="subsubsection-title">有収水量（全体）の見通し (55p)</h4>
+                <ul>
+                    <li><span class="keyword">評価</span>: <span class="handwritten">緩やかな減少傾向、収益自然増困難、創意工夫必要</span> <span class="icon"> 📉➡️💡</span></li>
+                </ul>
+                <details>
+                    <summary><span class="handwritten">有収水量（全体）の推移</span></summary>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>項目</th><th>R5</th><th>R15</th><th>R25</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>全体水量</td><td>64,596㎥/日</td><td>61,196㎥/日</td><td>59,768㎥/日</td></tr>
+                            <tr><td>生活用水</td><td>45,623㎥/日</td><td>42,756㎥/日</td><td>42,323㎥/日</td></tr>
+                            <tr><td>業務営業用水</td><td>16,825㎥/日</td><td>16,646㎥/日</td><td>15,673㎥/日</td></tr>
+                            <tr><td>工場用水</td><td>2,076㎥/日</td><td>1,722㎥/日</td><td>1,700㎥/日</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+                <h4 class="subsubsection-title">財政状況の見通しと事業経営 (56-57p)</h4>
+                <ul>
+                    <li><span class="keyword">現状</span>: <span class="handwritten">有収水量減、費用増で赤字懸念、R7予決算とも赤字可能性大</span> <span class="icon"> 🔴⚠️</span></li>
+                    <li><span class="keyword">影響</span>: <span class="handwritten">自己資金急速減少、事業停滞、支払い滞る</span> <span class="icon"> 💸⬇️🛑</span></li>
+                    <li><span class="keyword">対応</span>: <span class="handwritten">戦略的・計画的な検討必要</span> <span class="icon"> 🗺️📝</span></li>
+                </ul>
+                <h4 class="subsubsection-title">小括 (58p)</h4>
+                <ul>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">人口減で収益減、一斉更新で費用増、時期をどう乗り切るか</span> <span class="icon"> 📉➡️⬆️➡️❓</span></li>
+                    <li><span class="keyword">アプローチ</span>: <span class="handwritten">費用負担の長期平準化、料金とサービス水準の均衡、まちづくり支援視点</span> <span class="icon"> ⚖️🏘️</span></li>
+                </ul>
+            </div>
+        </div>
+    ```
+<div class="column">
+            <h2 class="section-title">3. 経営戦略のアプローチ <span class="icon"> 🛣️</span></h2>
+            <div class="card">
+                <h3 class="subsection-title">3-1 課題の総括と経営戦略のアプローチ (61-62p)</h3>
+                <h4 class="subsubsection-title">課題の総括 (61p)</h4>
+                <ul>
+                    <li><span class="keyword">現状</span>: <span class="handwritten">人口減で収益減、インフラ水準・投資縮小不可、まちづくり基盤</span> <span class="icon"> 📉🚫🏘️</span></li>
+                    <li><span class="keyword">目標</span>: <span class="handwritten">①経営基盤強化、②施設効率向上、③安全な給水維持</span> <span class="icon"> 💪⚙️💧✅</span></li>
+                </ul>
+                <h4 class="subsubsection-title">経営戦略のアプローチ (62p)</h4>
+                <ul>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">全国共通＋佐世保特有</span> <span class="icon"> 🌐➕⚓️</span></li>
+                    <li><span class="keyword">アプローチ</span>: <span class="handwritten">長期平準化、施設再構築、水源不足解消</span> <span class="icon"> 🗓️🔄💧➕</span></li>
+                    <li><span class="keyword">成果目標</span>: <span class="handwritten">料金負担最小化、事業経営安定化、供給持続性確保、市政推進支援</span> <span class="icon"> 💰⬇️✅💧➡️🏘️</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 class="subsection-title">3-2 経営目標・事業目標 (64-84p)</h3>
+                <h4 class="subsubsection-title">経営基盤を支えるための目標設定 (64p)</h4>
+                <ul>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">水源不足</span> <span class="icon"> 💧不足</span></li>
+                    <li><span class="keyword">目標</span>: <span class="handwritten">①マイナスをゼロへ（余裕率0%以上）、②一般経営転換（節水型脱却）</span> <span class="icon"> 0️⃣➡️📈</span></li>
+                    <li><span class="keyword">効果</span>: <span class="handwritten">渇水リスク低減、ダム更新着手、計画性・確実性確保</span> <span class="icon"> 💧✅ डैम🛠️🗓️</span></li>
+                </ul>
+                <h4 class="subsubsection-title">施設効率を高めるための目標設定 (65p)</h4>
+                <ul>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">施設数多さ、管路輻輳化</span> <span class="icon"> 🏭⬆️🕸️</span></li>
+                    <li><span class="keyword">目標</span>: <span class="handwritten">施設更新時の長期計画で再構築、施設数削減</span> <span class="icon"> 🔄➡️⬇️</span></li>
+                </ul>
+                <details>
+                    <summary><span class="handwritten">施設数削減目標</span></summary>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>項目</th><th>現状</th><th>将来目標</th><th>削減数</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>管路</td><td>2,323km</td><td>1,523km</td><td>-800km</td></tr>
+                            <tr><td>浄水場</td><td>28箇所</td><td>4箇所</td><td>-24</td></tr>
+                            <tr><td>配水池</td><td>327池</td><td>297池</td><td>-30</td></tr>
+                            <tr><td>ポンプ</td><td>155箇所</td><td>125箇所</td><td>-30</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+                <ul>
+                    <li><span class="keyword">方法</span>: <span class="handwritten">統廃合、ダウンサイジング、再配置・管網再編</span> <span class="icon"> ➡️⬇️🔄</span></li>
+                    <li><span class="keyword">効果</span>: <span class="handwritten">モノ・ヒト・カネで持続可能な経営</span> <span class="icon"> ⚙️🧑‍🤝‍🧑💰✅</span></li>
+                </ul>
+                <h4 class="subsubsection-title">施設数削減（再構築）の実施事例 (66p)</h4>
+                <ul>
+                    <li><span class="keyword">事例</span>: <span class="handwritten">上原地区再構築事業 (R4-R7)</span> <span class="icon"> 🏘️➡️🔄</span></li>
+                    <li><span class="keyword">成果</span>: <span class="handwritten">ポンプ6→2箇所、配水池6→4池</span> <span class="icon"> ⬇️⬇️</span></li>
+                    <li><span class="keyword">方針</span>: <span class="handwritten">更新時に再構築で施設削減</span> <span class="icon"> 🔄➡️⬇️</span></li>
+                </ul>
+                <h4 class="subsubsection-title">一斉更新時期を乗り越える目標設定 (67p)</h4>
+                <ul>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">膨大な管路更新必要</span> <span class="icon"> 📏⬆️🛠️</span></li>
+                    <li><span class="keyword">戦略</span>: <span class="handwritten">①更新サイクル延伸、②基幹施設優先、③小口径管路リスク管理</span> <span class="icon"> ⏳➡️基➡️⚠️</span></li>
+                    <li><span class="keyword">目標</span>: <span class="handwritten">負担の世代間格差抑制</span> <span class="icon"> 世代🤝</span></li>
+                </ul>
+                <h4 class="subsubsection-title">更新サイクルの延伸 (68-69p)</h4>
+                <ul>
+                    <li><span class="keyword">考え方</span>: <span class="handwritten">法定耐用年数超えも健全な施設は延伸</span> <span class="icon"> ⏳➡️➕</span></li>
+                    <li><span class="keyword">目標</span>: <span class="handwritten">管種・施設ごとに更新基準年・使用限界年設定</span> <span class="icon"> 📅➡️設定</span></li>
+                    <li><span class="keyword">効果</span>: <span class="handwritten">ライフサイクルコスト低減、単年負担削減</span> <span class="icon"> 📉💰⬇️</span></li>
+                    <li><span class="keyword">リスク</span>: <span class="handwritten">延伸に伴うリスクは後述</span> <span class="icon"> ⚠️➡️⬇️</span></li>
+                </ul>
+                <h4 class="subsubsection-title">基幹施設を中心とした基盤整備 (70p)</h4>
+                <ul>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">法定・更新基準年更新は困難</span> <span class="icon"> 🛠️🚫</span></li>
+                    <li><span class="keyword">戦略</span>: <span class="handwritten">基幹施設優先、小口径管路は事後保全中心</span> <span class="icon"> 基➡️⚠️</span></li>
+                    <li><span class="keyword">課題</span>: <span class="handwritten">小口径管路のリスク管理</span> <span class="icon"> ⚠️小</span></li>
+                </ul>
+                <h4 class="subsubsection-title">高まる管路リスクへの対処 (71p)</h4>
+                <ul>
+                    <li><span class="keyword">状況</span>: <span class="handwritten">管路を限界まで使用、リスク増大</span> <span class="icon"> ⚠️⬆️</span></li>
+                    <li><span class="keyword">対応</span>: <span class="handwritten">リスクマネジメントで給水サービス維持</span> <span class="icon"> 🛡️💧✅</span></li>
+                </ul>
+                <h4 class="subsubsection-title">管路更新とリスク保有量のイメージ (72p)</h4>
+                <ul>
+                    <li><span class="keyword">現状</span>: <span class="handwritten">年7-10km更新、800kmリスク残</span> <span class="icon"> 🐌⚠️</span></li>
+                    <li><span class="keyword">目標</span>: <span class="handwritten">年15km更新で1,500km更新、リスク管理でサービス維持</span> <span class="icon"> ⬆️⚠️➡️✅</span></li>
+                    <li><span class="keyword">効果</span>: <span class="handwritten">更新拡大でリスク減少、管理可能に</span> <span class="icon"> ⚠️⬇️➡️👍</span></li>
+                </ul>
+                <h4 class="subsubsection-title">リスクマネジメント (73-84p)</h4>
+                <ul>
+                    <li><span class="keyword">現状</span>: <span class="handwritten">減圧弁、管網ブロック化、夜間流量調査で修繕減少</span> <span class="icon"> ⬇️🛠️</span></li>
+                    <li><span class="keyword">全国比較</span>: <span class="handwritten">経年化率悪いが有効率高い、近年後退</span> <span class="icon"> 🔴➡️🟢⬇️</span></li>
+                    <li><span class="keyword">リスクの見通し</span>: <span class="handwritten">更新拡大で破裂事故低減、10年後も現体制で対応可能</span> <span class="icon"> ⬇️💥➡️✅</span></li>
+                    <li><span class="keyword">今後の対応策：モニタリング拡充</span>: <span class="handwritten">早期発見・対応、システム更新、AI検討</span> <span class="icon"> 🔍➡️🛠️➡️🤖</span></li>
+                    <li><span class="keyword">成果目標</span>: <span class="handwritten">更新量拡大で事故抑制、漏水量維持</span> <span class="icon"> ⬆️🛠️➡️💥⬇️💧✅</span></li>
+                </ul>
+            </div>
+        </div>
+    ```
+<div class="column">
+            <h2 class="section-title">4. 総括 <span class="icon"> まとめ</span></h2>
+            <div class="card">
+                <h3 class="subsection-title">長期戦略の概要 (86p)</h3>
+                <h4 class="subsubsection-title">当初20年</h4>
+                <ul>
+                    <li><span class="keyword">基盤整備</span>: <span class="handwritten">水源不足解消、基幹施設優先更新</span> <span class="icon"> 💧➕基🛠️</span></li>
+                    <li><span class="keyword">リスク管理</span>: <span class="handwritten">小口径管路リスク対応拡充、給水維持</span> <span class="icon"> ⚠️小➡️🛡️💧✅</span></li>
+                </ul>
+                <h4 class="subsubsection-title">次の20年</h4>
+                <ul>
+                    <li><span class="keyword">施設再構築</span>: <span class="handwritten">統廃合、ダウンサイジング、配置最適化、施設数削減</span> <span class="icon"> 🔄⬇️➡️⚙️⬆️</span></li>
+                    <li><span class="keyword">リスク縮小</span>: <span class="handwritten">小口径管路更新、リソースを更新に割当</span> <span class="icon"> ⚠️⬇️➡️🛠️⬆️</span></li>
+                    <li><span class="keyword">収益安定</span>: <span class="handwritten">節水型脱却で持続可能な経営環境</span> <span class="icon"> 💧➡️📈✅</span></li>
+                </ul>
+                <h4 class="subsubsection-title">全体目標</h4>
+                <ul>
+                    <li><span class="keyword">支出抑制・平準化</span> <span class="icon"> ⬇️💰🗓️</span></li>
+                    <li><span class="keyword">持続可能な事業環境完成</span> <span class="icon"> 🔄✅</span></li>
+                </ul>
+                <h4 class="subsubsection-title">次ステップ</h4>
+                <ul>
+                    <li><span class="keyword">当初10年間の投資計画策定</span> <span class="icon"> 💰➡️🏗️🗓️</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">出典：佐世保市上下水道経営検討委員会（経営戦略の審議）資料より</div>
+</body>
+</html>
