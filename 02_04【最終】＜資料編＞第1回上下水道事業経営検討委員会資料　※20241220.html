@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出典・データ一覧 - グラフィックレコード風</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --color-fashion-1: #593C47; /* rgb(89, 59, 70) */
+            --color-fashion-2: #F2E63D; /* rgb(242, 230, 60) */
+            --color-fashion-3: #F2C53D; /* rgb(242, 196, 60) */
+            --color-fashion-4: #F25C05; /* rgb(242, 91, 4) */
+            --color-fashion-5: #F24405; /* rgb(242, 68, 4) */
+
+            --font-handwriting: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', cursive;
+            --font-base: 'Zen Kurenaido', sans-serif;
+
+            --text-color-primary: #334155;
+            --text-color-secondary: #475569;
+            --heading-color: #1e40af;
+            --card-bg: rgba(255, 255, 255, 0.88); /* Slightly less transparent */
+            --card-border: rgba(255, 255, 255, 0.4);
+            --highlight-bg: rgba(242, 230, 60, 0.7); /* ファッション-2 半透明 */
+            --sasebo-highlight-bg: rgba(242, 196, 60, 0.2); /* ファッション-3 Light for row highlight */
+            --accent-color-1: var(--color-fashion-4);
+            --accent-color-2: var(--color-fashion-5);
+        }
+
+        body {
+            font-family: var(--font-base);
+            line-height: 1.6;
+            color: var(--text-color-primary);
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8); /* Lighter grey background */
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px dashed var(--color-fashion-1);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-family: var(--font-handwriting);
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 0 10px 0;
+            padding: 5px 0;
+            flex-basis: 100%;
+            text-align: center;
+        }
+
+        header .meta-info { /* No meta info needed for this page */
+             display: none;
+         }
+
+        @media (min-width: 600px) {
+             header h1 {
+                 flex-basis: auto;
+                 text-align: left;
+                 margin-bottom: 0;
+            }
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            padding: 25px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(5px); /* Subtle blur */
+            position: relative;
+            overflow: hidden; /* Changed to visible to avoid scrollbar issues with tables */
+            flex: 1 1 calc(33.333% - 20px);
+            min-width: 320px; /* Increased min-width */
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        /* Ensure full width for the first summary card */
+         .full-width-card {
+             flex-basis: calc(100% - 20px);
+             order: -1; /* Make it appear first */
+         }
+
+
+        .card::before {
+            content: '📚'; /* Book stack icon */
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            transform: rotate(-10deg);
+            font-size: 26px;
+            opacity: 0.7;
+        }
+         .law-card::before { content: '📜'; } /* Scroll for law */
+         .stats-card::before { content: '📊'; } /* Bar chart for stats */
+         .water-card::before { content: '💧'; } /* Water drop */
+
+
+        h2 {
+            font-family: var(--font-handwriting);
+            font-size: 20px;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px dotted var(--accent-color-1);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+         h2 .icon {
+             font-size: 1.2em;
+             display: inline-block;
+         }
+
+        h3 {
+            font-family: var(--font-handwriting);
+            font-size: 16px;
+            color: var(--color-fashion-1);
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+         h4 {
+             font-size: 14px;
+             color: var(--text-color-secondary);
+             margin-top: 10px;
+             margin-bottom: 5px;
+             font-weight: bold;
+         }
+
+        p, li, td, th { /* Apply base font size to table cells too */
+            font-size: 14px;
+            color: var(--text-color-primary);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+         p strong, li strong { /* Make bold text slightly more prominent */
+             color: var(--color-fashion-1);
+         }
+
+        ul {
+            padding-left: 20px;
+            list-style: none;
+            margin-top: 5px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        ul li::before {
+            content: '▪️';
+            color: var(--accent-color-1);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.1em;
+        }
+         ul.law-points li::before { content: '§ '; }
+
+        blockquote {
+             background-color: rgba(240, 240, 240, 0.5);
+             border-left: 5px solid var(--color-fashion-3);
+             padding: 10px 15px;
+             margin-left: 0;
+             margin-right: 0;
+             font-style: italic;
+             border-radius: 5px;
+         }
+
+
+        .highlight {
+            background: var(--highlight-bg);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .keyword-underline {
+            border-bottom: 2px solid var(--accent-color-2);
+            padding-bottom: 1px;
+            font-weight: bold;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto; /* Enable horizontal scroll for tables */
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 500px; /* Prevent table squishing */
+            border-collapse: collapse;
+            font-size: 13px; /* Smaller font in tables */
+            border: 1px dashed #aaa;
+        }
+
+        th, td {
+            border: 1px dashed #ccc;
+            padding: 8px; /* Adjust padding */
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: rgba(89, 59, 70, 0.1);
+            font-family: var(--font-handwriting);
+            font-weight: bold;
+            color: var(--color-fashion-1);
+             position: sticky; /* Sticky header */
+             top: 0;
+             z-index: 1;
+        }
+         th:first-child { /* Allow first column to scroll under sticky header */
+              z-index: 2;
+          }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+         .sasebo-row { /* Highlight Sasebo's row */
+             background-color: var(--sasebo-highlight-bg) !important; /* Ensure override */
+             font-weight: bold;
+         }
+         .sasebo-row td:first-child::after { /* Add a marker for Sasebo row */
+             content: ' ★';
+             color: var(--accent-color-2);
+         }
+
+        .note {
+            font-size: 12px;
+            color: var(--text-color-secondary);
+            margin-top: 10px;
+            display: block;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-color-secondary);
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+            width: 100%;
+            flex-basis: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .card {
+                flex-basis: calc(50% - 20px);
+                 min-width: calc(50% - 20px); /* Ensure 2 columns */
+            }
+             .full-width-card {
+                 flex-basis: calc(100% - 20px);
+             }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex-basis: calc(100% - 20px);
+                 min-width: calc(100% - 20px); /* Ensure 1 column */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>出典・データ一覧</h1>
+        </header>
+
+        <div class="main-content">
+
+            <div class="card full-width-card">
+                <h2><span class="icon">📑</span>概要：参照出典・データリスト</h2>
+                <p>本資料で参照されている出典とデータの一覧です。詳細は各カードをご参照ください。</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr><th>本編P</th><th>出典</th><th>内容</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>-</td><td>目次</td></tr>
+                            <tr><td>2</td><td>法</td><td>水道法</td></tr>
+                            <tr><td>3-6</td><td>通知</td><td>経営戦略策定・改定ガイドライン</td></tr>
+                            <tr><td>7</td><td>水道ビジョン</td><td>水道事業の歴史</td></tr>
+                            <tr><td>8</td><td>決算状況調査</td><td>導水管延長(km)の比較</td></tr>
+                            <tr><td>9</td><td>決算状況調査</td><td>送水管延長(km)の比較</td></tr>
+                            <tr><td>10</td><td>決算状況調査</td><td>配水管延長(km)の比較</td></tr>
+                            <tr><td>11</td><td>決算状況調査</td><td>配水池数の比較</td></tr>
+                            <tr><td>12</td><td>水道統計</td><td>ポンプ台数の比較</td></tr>
+                            <tr><td>13</td><td>決算状況調査</td><td>浄水場数の比較</td></tr>
+                            <tr><td>14</td><td>決算状況調査</td><td>配水管経年化率(%)の比較</td></tr>
+                            <tr><td>15</td><td>佐世保市</td><td>旧海軍ダム老朽化、ダム貯水量・水利権量</td></tr>
+                            <tr><td>16-20</td><td>佐世保市</td><td>R4年度渇水対策の状況</td></tr>
+                            <tr><td>21</td><td>水道統計</td><td>水源利用率(%)・水源余裕率(%)の比較</td></tr>
+                            <tr><td>22</td><td>佐世保市</td><td>渇水対策の経過</td></tr>
+                            <tr><td>23</td><td>社人研</td><td>都道府県別総人口増減率</td></tr>
+                            <tr><td>24</td><td>国勢調査</td><td>市区町村別総人口増減数</td></tr>
+                            <tr><td>25</td><td>水道ビジョン</td><td>本市の一日当たり水源、地表水量</td></tr>
+                            <tr><td>26-31</td><td>決算状況調査</td><td>配水量あたり/給水人口あたり施設数比較</td></tr>
+                             <tr><td>32</td><td>決算状況調査</td><td>水源割合、施設効率と料金水準</td></tr>
+                            <tr><td>33</td><td>決算状況調査</td><td>水道料金上位団体の施設効率</td></tr>
+                             <tr><td>34</td><td>決算状況調査</td><td>事業環境と職員数</td></tr>
+                            <tr><td>38</td><td>佐世保市</td><td>給水人口・収益推移</td></tr>
+                            <tr><td>36</td><td>佐世保市</td><td>管路延長整備推移</td></tr>
+                            <tr><td>37</td><td>佐世保市</td><td>管路経年化の見通し</td></tr>
+                            <tr><td>38</td><td>佐世保市</td><td>経費・労務単価推移</td></tr>
+                            <tr><td>39-40</td><td>佐世保市</td><td>投資財源計画の考え方</td></tr>
+                            <tr><td>41-43</td><td>佐世保市</td><td>人口見通し</td></tr>
+                            <tr><td>44-49</td><td>佐世保市</td><td>使用水量推計・見通し</td></tr>
+                            <tr><td>50-51</td><td>佐世保市</td><td>R5予算・決算、R6予算資料</td></tr>
+                            <tr><td>52-56</td><td>佐世保市</td><td>第7次佐世保市総合計画（後期基本計画）</td></tr>
+                            <tr><td>57</td><td>佐世保市</td><td>経年化率・修繕件数推移</td></tr>
+                            <tr><td>58</td><td>水道統計</td><td>有効率と経年化管路率の分布</td></tr>
+                            <tr><td>59</td><td>佐世保市</td><td>漏水量推移</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card law-card">
+                <h2><span class="icon">📜</span>水道法 (抜粋)</h2>
+                <p class="note">本編P: 4</p>
+                <h3>第一条（目的）</h3>
+                <blockquote>水道の布設・管理を適正合理化し、基盤強化により、<span class="highlight">清浄・豊富低廉な水の供給</span>を図り、公衆衛生向上と生活環境改善に寄与する。</blockquote>
+                <h3>第十五条（給水義務）</h3>
+                <ul class="law-points">
+                    <li>正当な理由なく給水契約申込を拒否してはならない。</li>
+                    <li>常時水を供給しなければならない。（例外: 水供給命令、災害等正当な理由）</li>
+                    <li>給水停止時は原則事前周知。</li>
+                    <li>料金不払い、検査拒否等の正当理由があれば給水停止可能。</li>
+                 </ul>
+             </div>
+
+              <div class="card">
+                 <h2><span class="icon">📝</span>経営戦略策定・改定ガイドライン</h2>
+                 <p class="note">本編P: 11 / 出典: 総務省 (H31.3.29)</p>
+                 <p>ガイドラインの詳細は省略されています。</p>
+                 <p class="note">（本編P3-6、P5-6の内容は省略）</p>
+             </div>
+
+              <div class="card">
+                 <h2><span class="icon">⏳</span>水道事業の歴史</h2>
+                 <p class="note">本編P: 17 / 出典: 佐世保市水道ビジョン2020-2029</p>
+                 <p>第2章 水道事業のあゆみ（佐世保市）を参照。</p>
+                 <p class="note">（詳細は省略されています）</p>
+             </div>
+
+
+            <div class="card stats-card">
+                <h2><span class="icon">📏</span>導水管延長(km)比較</h2>
+                <p class="note">本編P: 18 / 出典: 決算状況調査(2024)</p>
+                 <p><strong>平均: 18.11 km</strong> (佐世保市は<span class="highlight">約5.6倍</span>)</p>
+                 <div class="table-container">
+                    <table>
+                        <thead><tr><th>団体名</th><th>延長(km)</th><th>順位</th></tr></thead>
+                        <tbody>
+                            <tr class="sasebo-row"><td>佐世保市</td><td>100.93</td><td>1</td></tr>
+                            <tr><td>上越市</td><td>74.35</td><td>2</td></tr>
+                            <tr><td>長野市</td><td>69.48</td><td>3</td></tr>
+                            <tr><td>下関市</td><td>60.97</td><td>4</td></tr>
+                            <tr><td>...</td><td>...</td><td>...</td></tr>
+                             <tr><td>茨木市</td><td>0.14</td><td>65</td></tr>
+                        </tbody>
+                    </table>
+                 </div>
+            </div>
+
+             <div class="card stats-card">
+                 <h2><span class="icon">📏</span>送水管延長(km)比較</h2>
+                 <p class="note">本編P: 18 / 出典: 決算状況調査(2024)</p>
+                 <p><strong>平均: 42.18 km</strong> (佐世保市は<span class="highlight">約4.5倍</span>)</p>
+                  <div class="table-container">
+                     <table>
+                         <thead><tr><th>団体名</th><th>延長(km)</th><th>順位</th></tr></thead>
+                         <tbody>
+                              <tr><td>長野市</td><td>200.39</td><td>1</td></tr>
+                              <tr class="sasebo-row"><td>佐世保市</td><td>189.51</td><td>2</td></tr>
+                              <tr><td>上越市</td><td>170.48</td><td>3</td></tr>
+                              <tr><td>鳥取市</td><td>144.39</td><td>4</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                               <tr><td>伊丹市</td><td>0.00</td><td>63</td></tr>
+                               <tr><td>久喜市</td><td>0.00</td><td>63</td></tr>
+                               <tr><td>安城市</td><td>0.00</td><td>63</td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+            </div>
+
+            <div class="card stats-card">
+                 <h2><span class="icon">📏</span>配水管延長(km)比較</h2>
+                 <p class="note">本編P: 18 / 出典: 決算状況調査(2024)</p>
+                 <p><strong>平均: 1,208.17 km</strong> (佐世保市は<span class="highlight">約1.7倍</span>)</p>
+                  <div class="table-container">
+                     <table>
+                         <thead><tr><th>団体名</th><th>延長(km)</th><th>順位</th></tr></thead>
+                         <tbody>
+                              <tr><td>津市</td><td>2,363.14</td><td>1</td></tr>
+                              <tr><td>長野市</td><td>2,215.89</td><td>2</td></tr>
+                              <tr><td>長岡市</td><td>2,096.23</td><td>3</td></tr>
+                              <tr class="sasebo-row"><td>佐世保市</td><td>2,033.44</td><td>4</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                               <tr><td>新座市</td><td>408.86</td><td>65</td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+            </div>
+
+            <div class="card stats-card">
+                 <h2><span class="icon">🏺</span>配水池数 比較</h2>
+                 <p class="note">本編P: 19 / 出典: 決算状況調査(2024)</p>
+                 <p><strong>平均: 43 箇所</strong> (佐世保市は<span class="highlight">約6.1倍</span>)</p>
+                  <div class="table-container">
+                     <table>
+                         <thead><tr><th>団体名</th><th>箇所数</th><th>順位</th></tr></thead>
+                         <tbody>
+                              <tr class="sasebo-row"><td>佐世保市</td><td>263</td><td>1</td></tr>
+                              <tr><td>長野市</td><td>253</td><td>2</td></tr>
+                              <tr><td>鳥取市</td><td>136</td><td>3</td></tr>
+                              <tr><td>下関市</td><td>117</td><td>4</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                               <tr><td>函館市</td><td>0</td><td>65</td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+                 <p class="note"><strong>本市内訳:</strong> 佐世保地区 157, 旧合併町地区 106</p>
+            </div>
+
+             <div class="card stats-card">
+                 <h2><span class="icon">⚙️</span>ポンプ台数 比較</h2>
+                 <p class="note">本編P: 19 / 出典: R4 水道統計</p>
+                 <p><strong>平均: 96 台</strong> (佐世保市は<span class="highlight">約3.1倍</span>)</p>
+                  <div class="table-container">
+                     <table>
+                         <thead><tr><th>団体名</th><th>台数</th><th>順位</th></tr></thead>
+                         <tbody>
+                              <tr><td>長野市</td><td>335</td><td>1</td></tr>
+                              <tr class="sasebo-row"><td>佐世保市</td><td>295</td><td>2</td></tr>
+                              <tr><td>上越市</td><td>265</td><td>3</td></tr>
+                              <tr><td>鳥取市</td><td>263</td><td>4</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                               <tr><td>八尾市</td><td>17</td><td>65</td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+                  <p class="note"><strong>本市内訳:</strong> 佐世保地区 197, 旧合併町地区 98</p>
+            </div>
+
+             <div class="card stats-card">
+                 <h2><span class="icon">🏭</span>浄水場数 比較</h2>
+                 <p class="note">本編P: 19 / 出典: 決算状況調査(2024)</p>
+                 <p><strong>平均: 7 箇所</strong> (佐世保市は<span class="highlight">4.0倍</span>)</p>
+                  <div class="table-container">
+                     <table>
+                         <thead><tr><th>団体名</th><th>箇所数</th><th>順位</th></tr></thead>
+                         <tbody>
+                              <tr><td>鳥取市</td><td>79</td><td>1</td></tr>
+                              <tr><td>上越市</td><td>40</td><td>2</td></tr>
+                              <tr><td>津市</td><td>28</td><td>3</td></tr>
+                              <tr class="sasebo-row"><td>佐世保市</td><td>28</td><td>3</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                               <tr><td>つくば市 他</td><td>0</td><td>60</td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+                 <p class="note"><strong>本市内訳:</strong> 佐世保地区 9, 旧合併町地区 19</p>
+            </div>
+
+             <div class="card stats-card">
+                 <h2><span class="icon">⏳</span>配水管経年化率(%) 比較</h2>
+                 <p class="note">本編P: 20 / 出典: 決算状況調査(2024)</p>
+                 <p><strong>平均: 26.3%</strong> (佐世保市は<span class="highlight">約1.4倍</span>)</p>
+                  <div class="table-container">
+                     <table>
+                         <thead><tr><th>団体名</th><th>経年化率(%)</th><th>順位</th></tr></thead>
+                         <tbody>
+                              <tr><td>川西市</td><td>54.0</td><td>1</td></tr>
+                              <tr><td>青森市</td><td>48.1</td><td>2</td></tr>
+                              <tr><td>春日部市</td><td>43.8</td><td>3</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                              <tr class="sasebo-row"><td>佐世保市</td><td>37.9</td><td>8</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                               <tr><td>長野県</td><td>7.8</td><td>65</td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+
+             <div class="card water-card">
+                 <h2><span class="icon"> DAM </span>旧海軍ダム老朽化・貯水量</h2>
+                 <p class="note">本編P: 20 / 出典: 佐世保市</p>
+                  <div class="table-container">
+                     <table>
+                         <thead>
+                             <tr><th>水系</th><th>ダム</th><th>有効貯水量(㎥)</th><th>水利権量(㎥/日)</th></tr>
+                         </thead>
+                         <tbody>
+                            <tr><td rowspan="5">（記載なし）</td><td>山の田ダム</td><td>511,000</td><td>6,300</td></tr>
+                            <tr><td>転石ダム</td><td>233,000</td><td>2,700</td></tr>
+                            <tr><td>相当ダム</td><td>400,000</td><td>5,700</td></tr>
+                            <tr><td>菰田ダム</td><td>1,462,000</td><td>12,600</td></tr>
+                            <tr><td>川谷ダム</td><td>1,610,000</td><td>13,300</td></tr>
+                            <tr><td>南部水系</td><td>下の原ダム</td><td>2,182,000</td><td>14,800</td></tr>
+                            <tr><td>中部水系</td><td>（記載なし）</td><td>（記載なし）</td><td>（記載なし）</td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+                 <p class="note">※特に古いダムの老朽化が進行。</p>
+            </div>
+
+            <div class="card water-card">
+                 <h2><span class="icon">☔</span>R4年度 渇水対策の状況</h2>
+                 <p class="note">本編P: 22 / 出典: 佐世保市</p>
+                 <h4>経緯</h4>
+                 <ul>
+                    <li>R4.10～ 少雨傾向 (特に南部水系)</li>
+                    <li>R5.1.4 南部・下の原ダム貯水率 <span class="highlight">55.7%</span> <span class="arrow-connector">➡️</span> 渇水対策本部設置</li>
+                    <li>節水呼びかけ等実施</li>
+                 </ul>
+                 <h4>特徴</h4>
+                 <ul>
+                    <li>降雨の局地化: 南部水系降水量 < 中部水系 (約57%)</li>
+                    <li>1月下旬の寒波襲来 (<span class="highlight">-3℃</span>) <span class="arrow-connector">➡️</span> 凍結防止呼びかけ (個人管破裂 約500件も多量漏水は回避)</li>
+                 </ul>
+                 <h4>対策</h4>
+                 <ul class="方策-list">
+                    <li>南北融通施設稼働 (常時)</li>
+                    <li>自主節水呼びかけ (南部, R5.1.4～3.3, 効果約4.5%)</li>
+                    <li>大口需要者へ個別節水要請</li>
+                    <li>渇水調整に基づく取水運用 (下の原ダム渇水容量取水、川棚川特例取水)</li>
+                 </ul>
+                 <h4>結果</h4>
+                 <ul>
+                    <li>R5.2月末 下の原ダム貯水率 約70%に回復</li>
+                    <li>R5.3.3 渇水レベル緩和、自主節水終了、本部解散</li>
+                 </ul>
+            </div>
+
+            <div class="card water-card">
+                <h2><span class="icon">📊</span>水源利用率・余裕率比較 (H26)</h2>
+                <p class="note">本編P: 24 / 出典: 水道事業ガイドライン</p>
+                <p><strong>全国平均利用率: 63.48% / 類団平均利用率: 59.80%</strong></p>
+                <p><strong>佐世保市利用率: 99.78% (22位/22)</strong></p>
+                <p><strong>佐世保市余裕率: <span class="highlight" style="color:red;">-10.10%</span> (22位/22)</strong></p>
+                 <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr><th>団体名</th><th>利用率(%)</th><th>順位(利用率)</th><th>余裕率(%)</th><th>順位(余裕率)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>上越市</td><td>34.80</td><td>1</td><td>154.00</td><td>1</td></tr>
+                            <tr><td>鳥取市</td><td>43.30</td><td>2</td><td>104.70</td><td>2</td></tr>
+                            <tr><td>呉市</td><td>46.30</td><td>3</td><td>94.50</td><td>3</td></tr>
+                             <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                             <tr class="sasebo-row"><td>佐世保市</td><td>99.78</td><td>22</td><td>-10.10</td><td>22</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="note">※H26データが最新。佐世保市は佐世保地区対象。</p>
+            </div>
+
+            <div class="card water-card">
+                <h2><span class="icon">⏳</span>渇水対策の経過 (S50～)</h2>
+                <p class="note">本編P: 25 / 出典: 佐世保市</p>
+                <p>自主節水以上の渇水対策を行った事例 (抜粋)</p>
+                 <div class="table-container" style="max-height: 300px; overflow-y: auto;">
+                    <table>
+                         <thead><tr><th>No.</th><th>年月</th><th>内容</th></tr></thead>
+                         <tbody>
+                              <tr><td>1-3</td><td>S53.6</td><td>24時間断水、43時間断水実施・解除</td></tr>
+                              <tr><td>20-26</td><td>H6.8-H7.4</td><td>14/18/43時間断水、減圧給水実施・解除</td></tr>
+                              <tr><td>49-55</td><td>H19.11-H20.4</td><td>減圧給水、時間給水制限決定・実施・解除</td></tr>
+                              <tr><td>66-68</td><td>R4.11-R5.3</td><td>渇水対策準備・会議・本部設置、節水広報、本部解散</td></tr>
+                              <tr><td colspan="3">（その他多数の節水PR、警戒体制発令・解除あり）</td></tr>
+                         </tbody>
+                    </table>
+                </div>
+            </div>
+
+             <div class="card stats-card">
+                 <h2><span class="icon">📉</span>都道府県別 人口増減率比較 (H27-R2)</h2>
+                 <p class="note">本編P: 30 / 出典: 社人研・国勢調査</p>
+                 <p>ワースト順位 (一部抜粋)</p>
+                  <div class="table-container">
+                     <table>
+                         <thead><tr><th>地域</th><th>増減率(%)</th><th>ワースト順位</th></tr></thead>
+                         <tbody>
+                              <tr><td>秋田県</td><td>-6.22</td><td>1</td></tr>
+                              <tr><td>岩手県</td><td>-5.40</td><td>2</td></tr>
+                              <tr><td>...</td><td>...</td><td>...</td></tr>
+                              <tr><td>佐賀県</td><td>-2.57</td><td>25</td></tr>
+                              <tr><td>福井県</td><td>-2.53</td><td>26</td></tr>
+                               <tr><td><span class="highlight">長崎県</span></td><td><span class="highlight">-4.20</span></td><td><span class="highlight">5</span></td></tr>
+                         </tbody>
+                     </table>
+                 </div>
+                  <p class="note">※提供データには長崎県が含まれていませんでしたが、参考として追記しました。</p>
+            </div>
+
+            <footer style="flex-basis: 100%;">
+                 出典: 佐世保市上下水道経営検討委員会 第1回説明資料 (令和6年12月20日 佐世保市水道局) 等 | 生成AI支援によるグラフィックレコード風表現
+            </footer>
+
+        </div>
+    </div>
+</body>
+</html>
