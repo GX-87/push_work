@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>緩速ろ過池の仕組みと特徴</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      color: #334155;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #593C47 0%, #F25C05 100%);
+      padding: 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    
+    h1 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(to right, #F2E63D, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .date {
+      font-size: 14px;
+      color: #f2f2f2;
+    }
+    
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    
+    .column {
+      width: 33.33%;
+      padding: 15px;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid #F25C05;
+      position: relative;
+    }
+    
+    h2 {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px dashed #F2C53D;
+      display: flex;
+      align-items: center;
+    }
+    
+    h2::before {
+      content: "✏️";
+      margin-right: 8px;
+    }
+    
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 70%, #F2E63D 0%);
+      font-weight: bold;
+    }
+    
+    .note {
+      background-color: rgba(242, 197, 61, 0.1);
+      border-left: 3px solid #F2C53D;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    
+    .icon {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+    
+    .arrow {
+      position: absolute;
+      height: 40px;
+      width: 100px;
+      background-color: transparent;
+      border-top: 3px solid #F25C05;
+      border-right: 3px solid #F25C05;
+      transform: rotate(45deg);
+      z-index: -1;
+    }
+    
+    .hand-drawn-box {
+      border: 3px solid #593C47;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .hand-drawn-box::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 30px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-top: 3px solid #593C47;
+      border-left: 3px solid #593C47;
+      transform: rotate(45deg);
+      z-index: -1;
+    }
+    
+    .flow-diagram {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+    }
+    
+    .flow-step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .flow-step .number {
+      background-color: #F25C05;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    .flow-step .text {
+      flex: 1;
+    }
+    
+    .flow-arrow {
+      margin-left: 15px;
+      color: #F25C05;
+      font-size: 20px;
+      transform: rotate(90deg);
+    }
+    
+    .benefits-drawbacks {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .benefits, .drawbacks {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    
+    .benefits {
+      background-color: rgba(242, 230, 61, 0.1);
+    }
+    
+    .drawbacks {
+      background-color: rgba(242, 68, 4, 0.1);
+    }
+    
+    .benefits h3, .drawbacks h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 5px;
+      position: relative;
+    }
+    
+    li::before {
+      content: "•";
+      color: #F25C05;
+      font-weight: bold;
+      position: absolute;
+      left: -15px;
+    }
+    
+    .illustration {
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: 10px;
+      border: 2px dashed #593C47;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    .diagram {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 15px 0;
+      text-align: center;
+    }
+    
+    footer {
+      background-color: #593C47;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 30px;
+    }
+    
+    /* 池の断面図の描画 */
+    .pond-diagram {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      border: 2px solid #593C47;
+      border-radius: 5px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .water-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(173, 216, 230, 0.7) 0%, rgba(173, 216, 230, 0.9) 100%);
+    }
+    
+    .sand-layer {
+      position: absolute;
+      top: 40%;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(180deg, #F2E63D 0%, #F2C53D 100%);
+    }
+    
+    .gravel-layer {
+      position: absolute;
+      top: 70%;
+      left: 0;
+      width: 100%;
+      height: 20%;
+      background: repeating-linear-gradient(45deg, #aaa, #aaa 10px, #999 10px, #999 20px);
+    }
+    
+    .collection-layer {
+      position: absolute;
+      top: 90%;
+      left: 0;
+      width: 100%;
+      height: 10%;
+      background: #593C47;
+    }
+    
+    .layer-label {
+      position: absolute;
+      right: 10px;
+      color: #333;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .water-label {
+      top: 20%;
+    }
+    
+    .sand-label {
+      top: 55%;
+    }
+    
+    .gravel-label {
+      top: 80%;
+      color: white;
+    }
+    
+    .collection-label {
+      top: 95%;
+      color: white;
+    }
+    
+    .bacteria-icons {
+      position: absolute;
+      top: 35%;
+      left: 0;
+      width: 100%;
+      height: 10%;
+      text-align: center;
+    }
+    
+    .bacteria-icon {
+      display: inline-block;
+      margin: 0 5px;
+      font-size: 12px;
+    }
+    
+    .water-flow {
+      position: absolute;
+      left: 10px;
+      top: 10%;
+      font-size: 24px;
+      animation: flowing 2s infinite;
+    }
+    
+    @keyframes flowing {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
+    }
+    
+    .clean-water {
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      transform: translateX(-50%);
+      color: white;
+      font-weight: bold;
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>緩速ろ過池の仕組みと特徴</h1>
+      <div class="date">2025年4月18日</div>
+    </header>
+    
+    <div class="main-content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="card">
+          <h2>緩速ろ過とは</h2>
+          <p>緩速ろ過法は、<span class="highlight">砂層表面や砂層に増殖した微生物群</span>によって、水中の浮遊物質や溶解性物質を捕捉、酸化分解する作用に依存した浄水方法です。</p>
+          <p>この方法は<span class="highlight">伏流水など比較的水質が良好な原水</span>に適する方法で、生物の機能（生物膜）を活用します。</p>
+          
+          <div class="diagram">
+            <div class="pond-diagram">
+              <div class="water-layer"></div>
+              <div class="sand-layer"></div>
+              <div class="gravel-layer"></div>
+              <div class="collection-layer"></div>
+              
+              <div class="layer-label water-label">水深: 90〜120cm</div>
+              <div class="layer-label sand-label">砂層: 70〜90cm</div>
+              <div class="layer-label gravel-label">砂利層: 40〜60cm</div>
+              <div class="layer-label collection-label">集水装置</div>
+              
+              <div class="bacteria-icons">
+                <span class="bacteria-icon">🦠</span>
+                <span class="bacteria-icon">🦠</span>
+                <span class="bacteria-icon">🦠</span>
+                <span class="bacteria-icon">🦠</span>
+              </div>
+              
+              <div class="water-flow">💧</div>
+              <div class="clean-water">浄化された水 ✨</div>
+            </div>
+            <p>緩速ろ過池の断面構造</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>浄化のメカニズム</h2>
+          <div class="flow-diagram">
+            <div class="flow-step">
+              <div class="number">1</div>
+              <div class="text">原水が砂層をゆっくりとした速度で通過</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="number">2</div>
+              <div class="text">砂層表面での機械的ふるい分け作用</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="number">3</div>
+              <div class="text">水中微粒子の砂粒表面への付着作用</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="number">4</div>
+              <div class="text">生物ろ過膜の形成（藻類・微小動物・バクテリア）</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="number">5</div>
+              <div class="text">懸濁物質の阻止率向上・有機物の無機化</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="card">
+          <h2>緩速ろ過の特徴</h2>
+          <div class="benefits-drawbacks">
+            <div class="benefits">
+              <h3>利点 👍</h3>
+              <ul>
+                <li>浄水薬品を使用しない自然な処理方法</li>
+                <li>安定した浄化機能が得られる</li>
+                <li>アンモニア態窒素・鉄・マンガンの除去</li>
+                <li>臭気・合成洗剤・フェノールの除去</li>
+              </ul>
+            </div>
+            <div class="drawbacks">
+              <h3>留意点 ⚠️</h3>
+              <ul>
+                <li>広大な面積が必要</li>
+                <li>砂の削り取り・補砂に労力を要する</li>
+                <li>濁質の高い水には不適</li>
+                <li>ろ過速度が遅い</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="note">
+            <p>💡 ろ過速度は<span class="highlight">4.0～5.0m/日</span>を標準とします。原水水質が良好な場合は最大8.0m/日まで可能ですが、クリプトスポリジウム対策の場合は5.0m/日を超えないようにします。</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>構造と形状</h2>
+          <p>緩速ろ過池の深さは、<span class="highlight">2.5m～3.5m</span>を標準とし、下部集水装置の高さ、砂利層厚、砂層厚、砂面上の水深と余裕高を加えたものになります。</p>
+          
+          <div class="hand-drawn-box">
+            <ul>
+              <li>形状は長方形を標準とする</li>
+              <li>池数ごとに接して一列または二列に配置</li>
+              <li>周壁の天端の高さは地盤より15cm以上</li>
+              <li>寒冷地や水質汚染防止のために覆蓋を設置</li>
+            </ul>
+          </div>
+          
+          <p>📌 池の覆蓋に太陽光発電等の新エネルギー技術の導入も検討されています。</p>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card">
+          <h2>ろ過材の特性</h2>
+          <div class="hand-drawn-box">
+            <h3>ろ過砂の品質</h3>
+            <ul>
+              <li>有効径: 0.30～0.45mm</li>
+              <li>均等係数: 2.0以下</li>
+              <li>最大径: 2.0mm以下</li>
+              <li>最小径: 0.18mm</li>
+            </ul>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <h3>砂利層</h3>
+            <ul>
+              <li>最大径: 60mm</li>
+              <li>最小径: 3mm</li>
+              <li>層厚: 400～600mm</li>
+              <li>通常4段に敷きならす</li>
+            </ul>
+          </div>
+          
+          <p>⚠️ 削り取りを繰り返し行って砂層が約<span class="highlight">40cm</span>に達したら補砂を行います。補砂後のろ過機能回復には、夏期で1ヶ月程度、冬期で2ヶ月程度を要します。</p>
+        </div>
+        
+        <div class="card">
+          <h2>維持管理のポイント</h2>
+          <p>緩速ろ過池の維持管理では、<span class="highlight">汚砂の削り取り作業</span>が重要です。損失水頭の増加に伴い、必要なろ過水量が保てなくなった場合、ろ過を停止して砂層表面を10mm程度削り取ります。</p>
+          
+          <div class="flow-diagram">
+            <div class="flow-step">
+              <div class="number">1</div>
+              <div class="text">削り取り作業のための排水</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="number">2</div>
+              <div class="text">砂層表面を10mm程度平坦かつ均等に削り取り</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="number">3</div>
+              <div class="text">削り取った汚砂の洗浄・保管</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="number">4</div>
+              <div class="text">砂層が限界厚さ（約40cm）になったら補砂</div>
+            </div>
+          </div>
+          
+          <div class="note">
+            <p>💡 最近では<span class="highlight">汚砂削り取りロボット</span>や<span class="highlight">サンドスクレーパ装置</span>などの機械化も検討されています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      出典: 水道施設設計指針 2025年版
+    </footer>
+  </div>
+</body>
+</html>
