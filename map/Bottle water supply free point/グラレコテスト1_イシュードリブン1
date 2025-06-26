@@ -1,0 +1,544 @@
+はい、承知いたしました。以下のテキストをグラフィックレコード風のHTMLインフォグラフィックに変換します。
+
+-----
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脱「犬の道」- イシューからはじめる考え方</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+        body {
+            font-family: 'Zen Kurenaido', 'Yomogi', 'Kaisei Decol', sans-serif;
+            color: #334155;
+            line-height: 1.4;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        header {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px dashed #F25C05;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-family: 'Kaisei Decol', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(to right, #F2E63D, #F2C53D, #F25C05);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 5px;
+        }
+        .date-source {
+            font-size: 12px;
+            color: #475569;
+            text-align: right;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Glassmorphism */
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+        }
+        h2 {
+            font-family: 'Kaisei Decol', sans-serif;
+            font-size: 18px;
+            color: #1e40af;
+            border-bottom: 2px solid #F2E63D;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        h2::before {
+            content: '📌'; /* Icon for section heading */
+            margin-right: 8px;
+        }
+        p {
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            position: relative;
+            display: inline-block;
+        }
+        .highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 6px;
+            background-color: #F2E63D; /* Marker effect */
+            opacity: 0.7;
+            border-radius: 2px;
+            z-index: -1;
+        }
+        .emphasis {
+            color: #F25C05;
+            font-weight: bold;
+        }
+        .bubble {
+            background-color: #F2E63D;
+            border-radius: 15px;
+            padding: 10px 15px;
+            margin-top: 15px;
+            position: relative;
+            font-style: italic;
+        }
+        .bubble::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #F2E63D;
+            top: -8px;
+            left: 20px;
+        }
+        .arrow {
+            position: absolute;
+            font-size: 30px;
+            color: #F24405;
+            line-height: 1;
+            z-index: 10;
+        }
+        .icon {
+            font-size: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .line-connection {
+            border-top: 1px dashed #F25C05;
+            margin: 20px 0;
+        }
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .list-item::before {
+            content: '✔️';
+            margin-right: 10px;
+            color: #F24405;
+            font-size: 16px;
+        }
+        .matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            border: 2px solid #593C47;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .matrix-cell {
+            border: 1px dashed #F2C53D;
+            padding: 10px;
+            text-align: center;
+        }
+        .matrix-label-x, .matrix-label-y {
+            font-weight: bold;
+            color: #593C47;
+            text-align: center;
+        }
+        .matrix-label-x {
+            grid-column: span 2;
+            padding-top: 5px;
+            border-top: 1px solid #593C47;
+        }
+        .matrix-label-y {
+            grid-row: span 2;
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            padding-right: 5px;
+            border-right: 1px solid #593C47;
+        }
+        .hand-drawn-box {
+            border: 2px dashed #593C47;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .hand-drawn-box::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #593C47;
+            border-radius: 50%;
+            top: -5px;
+            left: -5px;
+        }
+        .hand-drawn-box::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #593C47;
+            border-radius: 50%;
+            bottom: -5px;
+            right: -5px;
+        }
+
+        .image-placeholder {
+            background-color: #ccc;
+            text-align: center;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #666;
+        }
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px dashed #F2C53D;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: #F2E63D;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .flow-step:nth-child(even) {
+            background-color: #F2C53D;
+        }
+        .flow-step-number {
+            font-weight: bold;
+            font-size: 18px;
+            color: #593C47;
+        }
+        .flow-step-text {
+            flex-grow: 1;
+            font-size: 14px;
+        }
+        .flow-arrow {
+            text-align: center;
+            font-size: 25px;
+            color: #F24405;
+        }
+        .definition-box {
+            border: 2px solid #593C47;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-top: 15px;
+            position: relative;
+        }
+        .definition-box::before {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 24px;
+            background-color: #fff;
+            padding: 0 5px;
+        }
+        .footnote {
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+            border-top: 1px dashed #ccc;
+            padding-top: 10px;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 5px solid #F25C05;
+            padding-left: 10px;
+            margin: 15px 0;
+            color: #593C47;
+        }
+        .zigzag-line {
+            border: none;
+            border-top: 3px dashed #F24405;
+            margin: 20px 0;
+            height: 0;
+            position: relative;
+        }
+        .zigzag-line::before, .zigzag-line::after {
+            content: '';
+            position: absolute;
+            background-color: #F24405;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            top: -5px;
+        }
+        .zigzag-line::before {
+            left: 0;
+        }
+        .zigzag-line::after {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>脱「犬の道」</h1>
+            <div class="subtitle">イシューからはじめる、圧倒的生産性の秘訣</div>
+        </div>
+        <div class="date-source">
+            <p>2025年6月26日</p>
+            <p>出典: 某書籍「イシューからはじめよ」より着想</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card" style="grid-column: 1 / -1;">
+            <h2><span class="icon">📝</span>この本の考え方 - 「脱・犬の道」</h2>
+            <div class="quote">
+                <p>「一人の科学者の一生の研究時間なんてごく限られている。研究テーマなんてごまんとある。ちょっと面白いなという程度でテーマを選んでいたら、本当に大切なことをやるひまがないうちに一生が終ってしまうんですよ。」<br>— 利根川進</p>
+            </div>
+            <p>この本で紹介する<span class="highlight">「イシューからはじめる」</span>という考え方は、世の中一般の考え方とは異なるところが多々あります。何よりも大切なのは、<span class="emphasis">「一般常識を捨てる」</span>ということ！</p>
+            <p>今は「？」と思われるかもしれませんが、一通り読んで実践したあとには、きっと納得してもらえるはず。</p>
+            <div class="zigzag-line"></div>
+            <h3><span class="icon">💡</span>「イシューからはじめる」思考シフト</h3>
+            <ul>
+                <li class="list-item">「問題を解く」より<span class="emphasis">「問題を見極める」</span></li>
+                <li class="list-item">「解の質を上げる」より<span class="emphasis">「イシューの質を上げる」</span></li>
+                <li class="list-item">「知れば知るほど知恵が湧く」より<span class="emphasis">「知りすぎるとバカになる」</span></li>
+                <li class="list-item">「1つひとつを速くやる」より<span class="emphasis">「やることを削る」</span></li>
+                <li class="list-item">「数字のケタ数にこだわる」より<span class="emphasis">「答えが出せるかにこだわる」</span></li>
+            </ul>
+            <p>これは単なる「生産性向上のための効率重視」や「ライフハック」とは焦点が異なる、<span class="highlight">本質的なアプローチ</span>です。</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">📊</span>バリューのある仕事とは何か？</h2>
+            <p>「生産性」とは、「どれだけのインプット (投下した労力と時間) で、どれだけのアウトプット (成果) を生み出せたか」ということ。</p>
+            <div class="hand-drawn-box">
+                <p style="text-align: center;">生産性 = アウトプット (成果) / インプット (労力・時間)</p>
+            </div>
+            <p>生産性を上げるには、<span class="emphasis">同じ労力・時間でより多くのアウトプットを生み出す</span>か、<span class="emphasis">同じアウトプットを生み出すための労力・時間を削る</span>かのどちらかです。</p>
+            <p>では、<span class="highlight">「多くのアウトプット」</span>とは何でしょうか？<br>ビジネスや研究で、きっちり対価がもらえる「意味のある仕事」のこと。</p>
+            <div class="bubble">
+                <p>僕のいたコンサルティング会社では、こうした意味のある仕事を<span class="emphasis">「バリューのある仕事」</span>と呼んでいました。</p>
+            </div>
+            <p>プロフェッショナルにとって、「バリューのある仕事とは何か」への答えがわからなければ、生産性など上げようがないのです。</p>
+            <div class="hand-drawn-box">
+                <p style="text-align: center; font-weight: bold; color: #F24405;">🤔 1分考えてみよう！<br>プロフェッショナルにとって、バリューのある仕事とは何か？</p>
+            </div>
+            <p>よくある答え:</p>
+            <ul>
+                <li class="list-item">質の高い仕事</li>
+                <li class="list-item">丁寧な仕事</li>
+                <li class="list-item">ほかの誰にもできない仕事</li>
+            </ul>
+            <p>これらは<span class="emphasis">本質を突いていない</span>ことが多いんです！<br>「質の高さ」はバリューの言い換え、「丁寧さ」は価値を保証せず、「誰にもできない」は価値がない場合も。</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🗺️</span>バリューの本質：2つの軸</h2>
+            <p>僕の理解では、<span class="highlight">「バリューの本質」は2つの軸</span>から成り立っています。</p>
+            <p>ひとつめが<span class="emphasis">「イシュー度」</span>、そして2つめが<span class="emphasis">「解の質」</span>です。</p>
+            <div class="matrix">
+                <div style="grid-column: 2 / span 1;" class="matrix-label-x">イシュー度 (横軸) →</div>
+                <div style="grid-row: 2 / span 1;" class="matrix-label-y">↑ 解の質 (縦軸)</div>
+
+                <div class="matrix-cell">
+                    <p style="color: #666;">非バリュー<br>(価値低い)</p>
+                </div>
+                <div class="matrix-cell">
+                    <p style="color: #666;">非バリュー<br>(価値低い)</p>
+                </div>
+                <div class="matrix-cell">
+                    <p style="color: #666;">非バリュー<br>(価値低い)</p>
+                </div>
+                <div class="matrix-cell" style="background-color: #F2E63D; border: 2px solid #F24405;">
+                    <p style="font-weight: bold; color: #F24405;">✨ バリューのある仕事！</p>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 12px; margin-top: 5px;">図2: バリューのマトリクス</p>
+
+            <div class="definition-box">
+                <p><span class="emphasis">「イシュー」</span>とは、<br>
+                    <span class="icon">✅</span> 「Two or more groups in a society have differing opinions about something.」<br>
+                    <span class="icon">✅</span> 「Can be phrased as a question.」<br>
+                    両方の条件を満たすものがイシューとなる。</p>
+                <p>つまり…<br>
+                    <span class="emphasis">「イシュー度」</span>＝<br>「自分の置かれた局面でこの問題に答えを出す必要性の高さ」</p>
+                <p><span class="emphasis">「解の質」</span>＝<br>「そのイシューに対してどこまで明確に答えを出せているかの度合い」</p>
+            </div>
+            <p>この右上の象限に入るものが<span class="highlight">「バリューのある仕事」</span>であり、右上に近づくほどその価値は上がります。</p>
+            <p>多くの人は「解の質」がバリューを決めると考えがちですが、<span class="emphasis">「イシュー度」こそが大切</span>なんです！イシュー度の低い仕事は、どれだけ解の質が高くても受益者から見た価値はゼロに等しいからです。</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🚫</span>踏み込んではならない「犬の道」</h2>
+            <p>「バリューのある仕事」ができるようになるには？<br>仕事や研究を始めた当初は、誰しも左下の領域からスタートします。</p>
+            <div class="hand-drawn-box">
+                <p><span class="emphasis">❌ 絶対にやってはならないこと ❌</span><br>
+                「一心不乱に大量の仕事をして右上に行こうとする」こと。</p>
+                <p style="text-align: center;">これを僕は<span class="highlight">「犬の道」</span>と呼んでいます。</p>
+                <p style="text-align: center; font-size: 12px;">（労働量で上にいき、時計回りで右上に到達しようとするアプローチ）</p>
+            </div>
+            <p>世の中にある「問題かもしれない」ことのほとんどは、実は<span class="emphasis">本当に取り組む必要のある問題ではありません</span>。</p>
+            <div class="bubble" style="background-color: #F2C53D;">
+                <p>100の「問題かもしれない」ことのうち、<br>本当に今白黒はっきりさせるべき問題は<span class="emphasis">せいぜい2つか3つ</span>くらい！</p>
+            </div>
+            <p>イシュー度の低い問題にどれだけ必死に解を出しても、最終的なバリューは上がらず、<span class="highlight">疲弊していくだけ</span>です。</p>
+            <p>「努力と根性があれば報われる」という戦い方では、いつまで経っても右上のバリューのある領域には届きません。</p>
+            <div class="line-connection"></div>
+            <p>僕もマッキンゼー時代、数カ月のプロジェクトで500枚のチャートを書いたけど、最終報告に入ったのはわずか5枚。歩留まりは1%でした。</p>
+            <div class="hand-drawn-box">
+                <p style="text-align: center;"><span class="emphasis">イシュー度 (1%) × 解の質 (1%) = 0.01% (1万回に1回)</span></p>
+                <p style="text-align: center; font-size: 12px;">図5: 「犬の道」での成功確率</p>
+            </div>
+            <p>これでは永遠にバリューのある仕事は生み出せず、変化を起こすこともできません。ただ徒労感が残るだけ。さらに、多くの仕事を低い質で食い散らすことで、<span class="highlight">「ダメな人」になってしまう可能性が高い</span>です。</p>
+            <p>仮に犬の道で成長できたとしても、そのやり方しか教えられず、<span class="emphasis">リーダーとしては大成できません</span>。単なる努力で右上の領域に行けることはほぼあり得ないのです。</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🚀</span>「圧倒的に生産性の高い人」のアプローチ</h2>
+            <p>本当に右上の領域に近づくなら、アプローチは明確です。</p>
+            <div class="hand-drawn-box">
+                <p style="text-align: center; font-weight: bold; color: #1e40af;">🔄 「犬の道」とは逆の<br>反時計回りのアプローチ！</p>
+            </div>
+            <p>1. まずは<span class="emphasis">ヨコ軸の「イシュー度」を上げる</span>。<br>
+                徹底してビジネス・研究活動の対象を意味のあること、つまり「イシュー度の高い問題」に絞り込む。<br>
+                いきなり核となる問題に絞れなくても、<span class="highlight">1/5程度に絞り込むことはできる</span>はずです。</p>
+            <p>2. その後に<span class="emphasis">タテ軸の「解の質」を上げていく</span>。<br>
+                絞り込んだイシューについて検討・分析を繰り返し行うことで、良いものができる確率が上がります。</p>
+            <p class="bubble" style="background-color: #F2E63D;">良い仕事をし、周囲から良いフィードバックを得て、初めて人は「解の質」を学ぶことができます。</p>
+            <p>このアプローチのためには、<span class="highlight">最初のステップである「イシュー度の高い問題の絞り込み」が不可欠</span>です。「あれもこれも」とがむしゃらにやっても成功はできません。</p>
+            <p><span class="emphasis">「正しい問題」に集中した「正しい訓練」</span>が成長に向けたカギとなるのです。</p>
+            <div class="line-connection"></div>
+            <h3><span class="icon">⏱️</span>1週間でアウトプットを出すプロセス (図7)</h3>
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <span class="flow-step-number">月曜</span>
+                    <span class="flow-step-text"><span class="emphasis">イシュードリブン</span> (第1章): 今本当に答えを出すべき問題=「イシュー」を見極める</span>
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-step">
+                    <span class="flow-step-number">火曜</span>
+                    <span class="flow-step-text"><span class="emphasis">仮説ドリブン1</span> (第2章): イシューを解けるところまで小さく砕き、ストーリーの流れを整理する</span>
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-step">
+                    <span class="flow-step-number">水・木曜</span>
+                    <span class="flow-step-text"><span class="emphasis">仮説ドリブン2</span> (第3章): ストーリーを検証するために必要なアウトプットの分析を設計する</span>
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-step">
+                    <span class="flow-step-number">金曜</span>
+                    <span class="flow-step-text"><span class="emphasis">アウトプットドリブン</span> (第4章): ストーリーの骨格を踏まえつつ、段取りよく検証する</span>
+                </div>
+                <div class="flow-arrow">⬇️</div>
+                <div class="flow-step">
+                    <span class="flow-step-number">金曜 (午後)</span>
+                    <span class="flow-step-text"><span class="emphasis">メッセージドリブン</span> (第5章): 論拠と構造を磨きつつ、報告書や論文をまとめる</span>
+                </div>
+            </div>
+            <p>大事なのは、このサイクルを<span class="highlight">「素早く回し、何回転もさせる」</span>こと。これが生産性を高めるカギとなります。</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🏃</span>根性に逃げるな！</h2>
+            <p>僕が若い人によくするアドバイスは「根性に逃げるな」です。</p>
+            <div class="hand-drawn-box">
+                <p><span class="emphasis">労働時間なんてどうでもいい！<br>価値のあるアウトプットが生まれればいい！</span></p>
+            </div>
+            <p>たとえ1日に5分しか働いていなくても、合意した以上のアウトプットをスケジュール通りに、あるいはそれより前に生み出せていれば何の問題もありません。</p>
+            <p>「一所懸命にやっています」「昨日も徹夜でした」といった頑張り方は、<span class="highlight">「バリューのある仕事」を求める世界では不要で害悪</span>です。</p>
+            <p>最悪なのは、残業や休日出勤を重ねるのに「この程度のアウトプットなら、規定時間だけ働けばよいのでは」と周囲に思われてしまうパターンです。</p>
+            <p>僕自身も、若い頃はフラフラになるまでやらないと仕事をした気になれず、時間をムダにしました。それは自己満足に過ぎず、体力の限界を学ぶ作業にしかなりません。</p>
+            <p><span class="emphasis">成長は「意味あるアウトプットをきっちりと出す」ことからしか得られない</span>のです。</p>
+            <p>バリューのある仕事を続け、その質を保てるなら「仕事に手を抜く」ことも全く問題ありません。人に聞けば済むことはそうすればいいし、簡単な方法でできるならそうすべきです。</p>
+            <div class="line-connection"></div>
+            <h3><span class="icon">⚖️</span>「ワーカー」と「プロフェッショナル」の違い</h3>
+            <div class="bubble" style="background-color: #F2C53D;">
+                <p>時間ベースで考えるのか、アウトプットベースで考えるのか。<br>これが「レイバラー/サラリーマン」と「ビジネスパーソン/プロフェッショナル」の違いです。</p>
+            </div>
+            <ul>
+                <li class="list-item"><span class="emphasis">レイバラー/サラリーマン:</span> 拘束時間に対して給料をもらう。残業・ベア交渉といった概念。</li>
+                <li class="list-item"><span class="emphasis">ビジネスパーソン:</span> マネジメントや自分の仕事に関わる「ハンドルを握る側」。労働時間ではなく、アウトプットにコミットし評価される。</li>
+                <li class="list-item"><span class="emphasis">プロフェッショナル:</span> 特定の訓練に基づく体系的なスキルをもち、それをベースに特定の価値の提供にコミットし、特定の顧客から報酬を得る。提供するのはあくまで顧客への価値。</li>
+            </ul>
+            <p>「限界まで働く」「労働時間で勝負する」というレイバラーの思想では、圧倒的に生産性の高い人にはなれません。</p>
+            <p><span class="highlight">プロフェッショナルとしての働き方</span>は、「労働時間が長いほど金をもらえる」という思想とは対極にあります。働いた時間ではなく、<span class="emphasis">「どこまで変化を起こせるか」</span>、あるいは<span class="emphasis">「どこまで意味のあるアウトプットを生み出せるか」</span>によって対価をもらい、評価され、存在意義が決まるのです。</p>
+        </div>
+
+        <div class="card" style="grid-column: 1 / -1;">
+            <h2><span class="icon">🔍</span>表層的な論理思考に陥っていないか？</h2>
+            <p>最近、「頭はよいが、反応がデジタル的で深みがない」と感じる人が増えました。</p>
+            <p>仕事は素早くこなし、受け答えも明瞭。でも、話していると「きちんと理解し合っているのだろうか」という不安を感じる。理解・共感する力が低いように思えるのです。</p>
+            <div class="bubble">
+                <p>「何を言われているのかわからないので説明してください」<br>— 相手は真顔で言うけれど、本当に理解しているのだろうか？</p>
+            </div>
+            <h3><span class="icon">🧠</span>「自分の頭でものを考える」</h3>
+            <p>基本的な知性をもつ人が正しい訓練をすれば、これはそれほど難しいことではありません。何事も受身にならず、<span class="highlight">自分の目で確かめたことを基に世界観をつくり上げていけば良い</span>のです。</p>
+            <p>情報一つひとつの重さや重層性、関連性を認識していないと、必ずどこかで困難にぶち当たります。<span class="emphasis">論理だけに寄りかかり、短絡的・表層的な思考をする人間は危険</span>です。</p>
+            <p>「ロジカル・シンキング」「フレームワーク思考」などの問題解決ツールはありますが、残念ながらこれらだけでは問題は決して解決しません。</p>
+            <p>問題に立ち向かう際には、それぞれの情報について、<span class="highlight">複合的な意味合いを考え抜く必要</span>があります。</p>
+            <p>それをしっかりつかむためには、他人からの話だけでなく、<span class="emphasis">自ら現場に出向くなりして一次情報をつかむ必要</span>があります。</p>
+            <p>さらに難しいのは、そうしてつかんだ情報を<span class="highlight">「自分なりに感じる」</span>こと。多くの本ではこの重要性にほとんど触れられていません。</p>
+            <div class="quote">
+                <p>「一次情報を死守せよ」</p>
+            </div>
+            <p>現場で情報に接するときに、どこまで深みのある情報をつかむことができるか。それはその人のベースになっている力そのものです。ここは一朝一夕で身につくものではありません。</p>
+            <p>知能や学歴は高いが知性を感じない人が妙に多いのは、この力の重要性が忘れられているためなのではないでしょうか。</p>
+        </div>
+
+        <div class="card" style="grid-column: 1 / -1;">
+            <h2><span class="icon">⏳</span>「深い理解」にはそれなりの時間が必要</h2>
+            <p>脳は「意味がある」と思うことしか認知できません。そしてその「意味がある」と思うかどうかは、<span class="highlight">「そのようなことが意味をもつ場面にどのくらい遭遇してきたか」</span>によって決まります。</p>
+            <div class="hand-drawn-box">
+                <p style="text-align: center;">有名な実験：タテ縞しかない空間で育った猫はヨコの線が見えなくなる → テーブルから落ちる！</p>
+            </div>
+            <p>これは、これまで処理してきた情報が脳の回路形成そのものに影響を与えたケースです。</p>
+            <p>たとえば、ある商品の戦略づくりをする場合、市場や競合の情報だけでなく、<span class="emphasis">モノづくりの行程、資材の調達・物流・販売などについても具体的にイメージし、変化を起こしたときの影響までを推定する力</span>がなければ正しい判断はできません。</p>
+            <p>問題解決では、組織の歴史的経緯や力学を知ることも不可欠です。</p>
+            <p>これらの素養を身につけるためには、<span class="highlight">それなりの年月が必要</span>となります。科学の研究についても同様です。</p>
+            <p>現在わかっていること、最近の発見とその意味合いなど、<span class="emphasis">対峙する問題を深いコンテキスト（文脈）に沿って理解できるか</span>、それが最初の勝負どころとなります。</p>
+            <p>この本の読者の皆さんには、情報を噛みしめる人、つまりは<span class="emphasis">さまざまな意味合い、価値、重さを正しく理解できる人</span>であってほしいと思います。</p>
+            <p>そして、表面的な論理だけで<span class="highlight">「考えたフリ」をする人にならないよう</span>、心がけてほしいと願っています。</p>
+        </div>
+    </div>
+
+    <footer class="footnote">
+        <p>※ このグラフィックレコードは、書籍「イシューからはじめよ 知的生産の「シンプルな本質」」からの着想を得て作成されています。</p>
+    </footer>
+</body>
+</html>
+```
+
+-----
